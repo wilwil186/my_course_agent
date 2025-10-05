@@ -1,82 +1,59 @@
-# pip install -U langchain-community python-dotenv
+# main.py
+# Agente ReAct con LangGraph + Ollama (Qwen) + wrapper para input vacío (Studio)
 
-# >>> Igual que en el curso:
-# from langchain.agents import create_agent   # (ya no existe)
-# En su lugar, dejamos un "shim" para que el código luzca igual.
-
-from __future__ import annotations
-from dataclasses import dataclass
-from typing import Callable, List, Dict, Any
 import os
+from langgraph.prebuilt import create_react_agent
+from langchain_ollama import ChatOllama
+from langchain_core.tools import tool
+from langgraph.graph import StateGraph, MessagesState, END
+from langchain_core.messages import HumanMessage
 
-from dotenv import load_dotenv
-from langchain_community.chat_models import ChatOllama
-from langchain.schema import HumanMessage
 
-load_dotenv()
-
-# ------------------------------
-# Config: modelo local (Ollama)
-# ------------------------------
-MODEL = os.getenv("MODEL", "qwen2.5:7b-instruct")
-BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-
-# ------------------------------
-# Tool de ejemplo (idéntica)
-# ------------------------------
+# --------- Herramienta de ejemplo ----------
+@tool
 def get_weather(city: str) -> str:
-    """Get weather for a given city."""
-    return f"It's always sunny in {city}!"
+    """Devuelve el clima de una ciudad (demo simple)."""
+    return f"El clima en {city} siempre es soleado ☀️"
 
 
-# ----------------------------------------------------
-# Pequeño "shim" para imitar create_agent del curso
-# ----------------------------------------------------
-@dataclass
-class _MiniAgent:
-    llm: ChatOllama
-    tools: List[Callable[..., str]]
-    prompt: str
+# --------- LLM local (Ollama) ----------
+MODEL = os.getenv("MODEL", "qwen2.5:7b-instruct")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+llm = ChatOllama(model=MODEL, base_url=OLLAMA_BASE_URL)
 
-    def _maybe_call_tool(self, text: str) -> str | None:
-        """
-        Router ultra simple: si detecta 'weather' o 'clima',
-        intenta extraer la ciudad y llama la tool get_weather.
-        """
-        low = text.lower()
-        if "weather" in low or "clima" in low:
-            city = "San Francisco"
-            # extracción super básica para demo
-            for token in [" in ", " de ", " en ", " para "]:
-                if token in low:
-                    city = text.split(token, 1)[1].strip().strip(".?!")
-                    break
-            # Buscar tool compatible por nombre
-            for f in self.tools:
-                if f.__name__ == "get_weather":
-                    return f(city)
-        return None
+# Grafo base (prebuilt ReAct)
+base_agent = create_react_agent(llm, tools=[get_weather])
 
-    def invoke(self, payload: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Imitamos la firma del curso:
-        agent.invoke({"messages": [{"role":"user","content":"..."}]})
-        """
-        msgs = payload.get("messages", [])
-        if isinstance(msgs, str):
-            user_text = msgs
-        else:
-            user_text = msgs[-1]["content"] if msgs else "Hello!"
+# --------- Wrapper: asegura tener al menos 1 mensaje ---------
+def ensure_input(state: MessagesState):
+    """Si Studio llama sin mensajes, inyecta un 'Hola' por defecto."""
+    if not state.get("messages"):
+        return {"messages": [HumanMessage("Hola")]}
+    return {}
 
-        # 1) Intento de tool
-        tool_answer = self._maybe_call_tool(user_text)
-        if tool_answer is not None:
-            return {"output": tool_answer}
-
-        # 2) Llamada al LLM local (Ollama)
-        sys_prefix = f"{self.prompt}\n\n" if self.prompt else ""
-        result = self.llm.invoke([HumanMessage(content=sys_prefix + user_text)])
-        return {"output": result.content}
+# Construir app final exportable para LangGraph CLI/Studio
+g = StateGraph(MessagesState)
+g.add_node("ensure_input", ensure_input)
+g.add_node("agent", base_agent)  # puedes pasar el runnable directo como nodo
+g.set_entry_point("ensure_input")
+g.add_edge("ensure_input", "agent")
+g.add_edge("agent", END)
+app = g.compile()   # <--- ESTE es el grafo que exponemos a LangGraph
 
 
-def create_agent(model: str, tools: List[Callable[...,]()]()_
+# --------- Helper para uso por terminal (python main.py) ----------
+def ask(question: str) -> str:
+    """Invoca al grafo y devuelve solo el texto final."""
+    result = app.invoke({"messages": [{"role": "user", "content": question}]})
+    last = result["messages"][-1]
+    content = getattr(last, "content", last)
+    if isinstance(content, list):
+        return "".join(p.get("text", "") for p in content if isinstance(p, dict))
+    return content
+
+
+if __name__ == "__main__":
+    q = "¿Cuál es el clima en Bogotá?"
+    print(f"\n💬 Usuario: {q}")
+    print("\n🟢 Respuesta del agente:")
+    print(ask(q))
