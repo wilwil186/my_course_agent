@@ -84,7 +84,7 @@ Con LangGraph:
 - [Documentación oficial de LangGraph (open source)](https://python.langchain.com/docs/langgraph)  
 - [Repositorio oficial de LangGraph en GitHub](https://github.com/langchain-ai/langgraph)  
 - [LangChain Documentation: Agentes y herramientas](https://python.langchain.com/docs/how_to/#agents)  
-- [Artículo: “What is an AI Agent?” (LangChain Blog)](https://blog.langchain.dev/what-is-an-ai-agent)  
+- [Artículo: “What is an AI Agent?” (LangChain Blog)](https://blog.langchain.com/what-is-an-agent/)  
 - [Documentación de OpenAI sobre agentes y funciones](https://platform.openai.com/docs/guides/function-calling)
 
 ---
