@@ -1263,8 +1263,8 @@ dev = [
 requires-dist = [
     { name = "langchain", specifier = ">=0.3" },
     { name = "langchain-core", specifier = ">=0.3" },
-    { name = "langchain-ollama", specifier = ">=0.1.0" },
-    { name = "langgraph", specifier = ">=0.2.33" },
+    { name = "langchain-ollama", specifier = ">=0.3" },
+    { name = "langgraph", specifier = ">=0.2" },
     { name = "langgraph-api", specifier = ">=0.4.35" },
     { name = "pydantic", specifier = "<3" },
     { name = "python-dotenv", specifier = ">=1.0" },

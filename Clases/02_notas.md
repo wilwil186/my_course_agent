@@ -1,4 +1,4 @@
-s# ⚙️ Clase 2: Configuración de entorno Python y tu primer agente (100% Open Source)
+# ⚙️ Clase 2: Configuración de entorno Python y tu primer agente (100% Open Source)
 
 > Curso: **Crear Agentes de AI con LangGraph**  
 > Objetivo: Dejar listo tu entorno con `uv` + `Ollama` + `LangGraph` (arquitectura `src/`) y levantar un agente mínimo que podrás debuggear en **LangGraph Studio**, sin depender de APIs cerradas.
