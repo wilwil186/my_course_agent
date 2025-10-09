@@ -1,9 +1,11 @@
 [project]
 name = "my-course-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Agente modular con LangGraph, Ollama y arquitectura profesional (src/agents, api, notebooks)"
 readme = "README.md"
 requires-python = ">=3.13"
+
+# Dependencias principales (producción)
 dependencies = [
     "langchain>=0.3",
     "langchain-core>=0.3",
@@ -14,8 +16,19 @@ dependencies = [
     "python-dotenv>=1.0",
 ]
 
+# Dependencias de desarrollo
 [dependency-groups]
 dev = [
     "jupyter>=1.1.1",
     "langgraph-cli[inmem]>=0.4.2",
 ]
+
+# Permite que Python reconozca paquetes dentro de src/
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+
+# Indica a uv dónde está el código fuente
+[tool.uv.sources]
+my-course-agent = { path = "src" }
+
