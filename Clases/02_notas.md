@@ -1,9 +1,4 @@
-¡de una! Te dejo el **README de la Clase 2** (100% open-source) listo para pegar en tu repo del curso dentro de `clases/` como `02_Notas.md`. Lo basé en cómo ya montaste tu repo `my_course_agent` (estructura `src/`, `langgraph.json`, uso de Ollama y `uv`) para que todo corra tal cual en local. Referencio dónde ya tienes cada cosa. ([GitHub][1])
-
----
-
-````markdown
-# ⚙️ Clase 2: Configuración de entorno Python y tu primer agente (100% Open Source)
+s# ⚙️ Clase 2: Configuración de entorno Python y tu primer agente (100% Open Source)
 
 > Curso: **Crear Agentes de AI con LangGraph**  
 > Objetivo: Dejar listo tu entorno con `uv` + `Ollama` + `LangGraph` (arquitectura `src/`) y levantar un agente mínimo que podrás debuggear en **LangGraph Studio**, sin depender de APIs cerradas.
@@ -222,16 +217,3 @@ ollama run qwen2.5:7b-instruct   # prueba el modelo directo en Ollama
 
 **Siguiente clase →** añadiremos **herramientas (tools)** al agente y un **branching** básico en el grafo.
 
-```
-
----
-
-¿Lo pego también como `clases/02_Notas.md` y te propongo el `main.py` exacto según tu árbol actual? Si quieres, te lo adapto a tus nombres de paquete/funciones (por ejemplo, si ya tienes `ensure_input` o un `ask()` distinto).
-::contentReference[oaicite:15]{index=15}
-```
-
-[1]: https://github.com/wilwil186/my_course_agent "GitHub - wilwil186/my_course_agent"
-[2]: https://docs.langchain.com/oss/python/langgraph/overview?utm_source=chatgpt.com "LangGraph Overview - Docs by LangChain"
-[3]: https://python.langchain.com/docs/integrations/llms/ollama/?utm_source=chatgpt.com "OllamaLLM"
-[4]: https://python.langchain.com/docs/integrations/providers/ollama/?utm_source=chatgpt.com "Ollama"
-[5]: https://python.langchain.com/api_reference/ollama/?utm_source=chatgpt.com "langchain-ollama: 0.3.8"
