@@ -1,9 +1,4 @@
 ¡listo! Aquí tienes el archivo para tu repo, como
-📄 `clases/03_Notas.md`
-
----
-
-````markdown
 # ⚙️ Clase 3: Configuración de **uv** para escalar agentes de IA en producción
 
 > Curso: **Crear Agentes de AI con LangGraph**  
@@ -298,8 +293,3 @@ uv run uvicorn api.http:app --reload --port 8000
 
 **Siguiente clase →** añadir **tools** (herramientas), control de **estado** y **ramas** (branching) para comportamientos más inteligentes.
 
-```
-
----
-::contentReference[oaicite:0]{index=0}
-```
