@@ -1,4 +1,3 @@
-¡listo! Aquí tienes el archivo para tu repo, como
 # ⚙️ Clase 3: Configuración de **uv** para escalar agentes de IA en producción
 
 > Curso: **Crear Agentes de AI con LangGraph**  
