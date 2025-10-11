@@ -8,8 +8,10 @@ requires-python = ">=3.13"
 # Dependencias principales (producción)
 dependencies = [
     "langchain>=0.3",
+    "langchain-anthropic>=0.3.22",
     "langchain-core>=0.3",
     "langchain-ollama>=0.3",
+    "langchain-openai>=0.3.35",
     "langgraph>=0.2",
     "langgraph-api>=0.4.35",
     "pydantic<3",
