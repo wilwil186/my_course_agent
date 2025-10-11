@@ -1,6 +1,5 @@
 # Clase 8 — RAG con OpenAI *File Search* (PDFs)
 
-**Duración:** ~18 min  
 **Objetivo:** Implementar un RAG sencillo para consultar **PDFs** con la *tool* **file search** de OpenAI, sin montar tu propia base vectorial.
 
 ---
