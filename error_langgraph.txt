@@ -14,736 +14,315 @@ This in-memory server is designed for development and testing.
 For production use, please use LangGraph Platform.
 
 
-[2m2025-10-12T18:33:33.642193Z[0m [[32m[1minfo     [0m] [1mUsing langgraph_runtime_inmem [0m [[0m[1m[34mlanggraph_runtime[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
 [version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)
-[2m2025-10-12T18:33:33.646351Z[0m [[32m[1minfo     [0m] [1m[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)[0m [[0m[1m[34mversion_check[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)'[0m [36mthread_name[0m=[35m'Thread-3 (_check_newer_version)'[0m
-[2m2025-10-12T18:33:33.646945Z[0m [[32m[1minfo     [0m] [1mUsing auth of type=noop       [0m [[0m[1m[34mlanggraph_api.auth.middleware[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:33.648670Z[0m [[32m[1minfo     [0m] [1mStarting In-Memory runtime with langgraph-api=0.4.35 and in-memory runtime=0.14.1[0m [[0m[1m[34mlanggraph_runtime_inmem.lifespan[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_runtime_inmem_version[0m=[35m0.14.1[0m [36mthread_name[0m=[35masyncio_0[0m [36mversion[0m=[35m0.4.35[0m
-[2m2025-10-12T18:33:33.662669Z[0m [[32m[1minfo     [0m] [1mStarting thread TTL sweeper with interval 5 minutes[0m [[0m[1m[34mlanggraph_api.thread_ttl[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36minterval_minutes[0m=[35m5[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mstrategy[0m=[35mdelete[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T18:33:33.743981Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:34.094671Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:34.445222Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:34.795677Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:35.146156Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:35.172239Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'agent'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35magent[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T18:33:35.190961Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'simple'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35msimple[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T18:33:35.230771Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'rag'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35mrag[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T18:33:35.240601Z[0m [[32m[1minfo     [0m] [1mStarting 1 background workers [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_0[0m
-[2m2025-10-12T18:33:35.241077Z[0m [[32m[1minfo     [0m] [1mWorker stats                  [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mactive[0m=[35m0[0m [36mapi_variant[0m=[35mlocal_dev[0m [36mavailable[0m=[35m1[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax[0m=[35m1[0m [36mthread_name[0m=[35masyncio_1[0m
-Server started in 2.30s
-[2m2025-10-12T18:33:35.275439Z[0m [[32m[1minfo     [0m] [1mServer started in 2.30s       [0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'Server started in 2.30s'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
+[2m2025-10-12T18:40:39.444973Z[0m [[32m[1minfo     [0m] [1m[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)[0m [[0m[1m[34mversion_check[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)'[0m [36mthread_name[0m=[35m'Thread-3 (_check_newer_version)'[0m
+[2m2025-10-12T18:40:39.699347Z[0m [[32m[1minfo     [0m] [1mUsing langgraph_runtime_inmem [0m [[0m[1m[34mlanggraph_runtime[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:39.704103Z[0m [[32m[1minfo     [0m] [1mUsing auth of type=noop       [0m [[0m[1m[34mlanggraph_api.auth.middleware[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:39.705777Z[0m [[32m[1minfo     [0m] [1mStarting In-Memory runtime with langgraph-api=0.4.35 and in-memory runtime=0.14.1[0m [[0m[1m[34mlanggraph_runtime_inmem.lifespan[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_runtime_inmem_version[0m=[35m0.14.1[0m [36mthread_name[0m=[35masyncio_0[0m [36mversion[0m=[35m0.4.35[0m
+[2m2025-10-12T18:40:39.719766Z[0m [[32m[1minfo     [0m] [1mStarting thread TTL sweeper with interval 5 minutes[0m [[0m[1m[34mlanggraph_api.thread_ttl[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36minterval_minutes[0m=[35m5[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mstrategy[0m=[35mdelete[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:40:39.779869Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:40.130654Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:40.481304Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:40.831818Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:41.182354Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:41.214116Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'agent'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35magent[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:40:41.232220Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'simple'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35msimple[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:40:41.272321Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'rag'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35mrag[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:40:41.278646Z[0m [[32m[1minfo     [0m] [1mStarting 1 background workers [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:40:41.279028Z[0m [[32m[1minfo     [0m] [1mWorker stats                  [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mactive[0m=[35m0[0m [36mapi_variant[0m=[35mlocal_dev[0m [36mavailable[0m=[35m1[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax[0m=[35m1[0m [36mthread_name[0m=[35masyncio_1[0m
+Server started in 2.29s
+[2m2025-10-12T18:40:41.310715Z[0m [[32m[1minfo     [0m] [1mServer started in 2.29s       [0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'Server started in 2.29s'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
 🎨 Opening Studio in your browser...
-[2m2025-10-12T18:33:35.275553Z[0m [[32m[1minfo     [0m] [1m🎨 Opening Studio in your browser...[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'🎨 Opening Studio in your browser...'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
+[2m2025-10-12T18:40:41.310967Z[0m [[32m[1minfo     [0m] [1m🎨 Opening Studio in your browser...[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'🎨 Opening Studio in your browser...'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
 URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
-[2m2025-10-12T18:33:35.275630Z[0m [[32m[1minfo     [0m] [1mURL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
-[2m2025-10-12T18:33:35.496752Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:35.741797Z[0m [[32m[1minfo     [0m] [1mQueue stats                   [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax_age_secs[0m=[35mNone[0m [36mmed_age_secs[0m=[35mNone[0m [36mn_pending[0m=[35m0[0m [36mn_running[0m=[35m0[0m [36mthread_name[0m=[35masyncio_0[0m
-[2m2025-10-12T18:33:35.847447Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:36.198041Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:36.200142Z[0m [[32m[1minfo     [0m] [1mGetting auth instance: None   [0m [[0m[1m[34mlanggraph_api.auth.custom[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_auth[0m=[35mNone[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:36.548650Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:36.899343Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:37.249952Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:37.600523Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:37.951158Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:38.301836Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:38.456373Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 500 2053ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2053[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:38.457191Z[0m [[31m[1merror    [0m] [1mException in ASGI application
-[0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-  + Exception Group Traceback (most recent call last):
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
-  |     yield
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 183, in __call__
-  |     async with anyio.create_task_group() as task_group:
-  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
-  |     raise BaseExceptionGroup(
-  |         "unhandled errors in a TaskGroup", self._exceptions
-  |     ) from None
-  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
-  +-+---------------- 1 ----------------
-    | Traceback (most recent call last):
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    |     result = await app(  # type: ignore[func-returns-value]
-    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |         self.scope, self.receive, self.send
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     )
-    |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    |     return await self.app(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    |     await self.app(scope, receive, _send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    |     with recv_stream, send_stream, collapse_excgroups():
-    |                                    ~~~~~~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    |     self.gen.throw(value)
-    |     ~~~~~~~~~~~~~~^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    |     response = await self.dispatch_func(request, call_next)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    |     response = await call_next(request)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    |     raise app_exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    |     await self.app(scope, receive_or_disconnect, send_no_error)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    |     await self.simple_response(scope, receive, send, request_headers=headers)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    |     await self.app(scope, inner_receive, inner_send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    |     return await super().__call__(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    |     return await super().handle(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    |     response: ASGIApp = await func(request)
-    |                         ^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    |     return await func(*args, **kwargs)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 354, in get_assistant_schemas
-    |     async with get_graph(
-    |                ~~~~~~~~~^
-    |         assistant["graph_id"],
-    |         ^^^^^^^^^^^^^^^^^^^^^^
-    |     ...<2 lines>...
-    |         store=(await api_store.get_store()),
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     ) as graph:
-    |     ^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    |     async with _generate_graph(value) as graph_obj:
-    |                ~~~~~~~~~~~~~~~^^^^^^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    |     yield await value
-    |           ^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 100, in async_answer
-    |     chain = _build_chain()
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 77, in _build_chain
-    |     retriever = _load_retriever_if_available()
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 39, in _load_retriever_if_available
-    |     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 69, in __init__
-    |     import sentence_transformers  # type: ignore[import]
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/__init__.py", line 10, in <module>
-    |     from sentence_transformers.backend import (
-    |     ...<3 lines>...
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/__init__.py", line 5, in <module>
-    |     from .quantize import export_dynamic_quantized_onnx_model, export_static_quantized_openvino_model
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/quantize.py", line 7, in <module>
-    |     from sentence_transformers.util import disable_datasets_caching, is_datasets_available
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/__init__.py", line 15, in <module>
-    |     from .retrieval import (
-    |     ...<5 lines>...
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/retrieval.py", line 13, in <module>
-    |     from .similarity import cos_sim
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/similarity.py", line 5, in <module>
-    |     from sklearn.metrics import pairwise_distances
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/__init__.py", line 73, in <module>
-    |     from .base import clone  # noqa: E402
-    |     ^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/base.py", line 19, in <module>
-    |     from .utils._metadata_requests import _MetadataRequester, _routing_enabled
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/__init__.py", line 23, in <module>
-    |     from ._repr_html.estimator import estimator_html_repr
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 38, in <module>
-    |     _CSS_STYLE = _get_css_style()
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 30, in _get_css_style
-    |     estimator_css = estimator_css_file.read_text(encoding="utf-8")
-    |   File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
-    |     return PathBase.read_text(self, encoding, errors, newline)
-    |            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/lib/python3.13/pathlib/_abc.py", line 633, in read_text
-    |     return f.read()
-    |            ~~~~~~^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/blockbuster/blockbuster.py", line 109, in wrapper
-    |     raise BlockingError(func_name)
-    | blockbuster.blockbuster.BlockingError: Blocking call to io.TextIOWrapper.read
-    | 
-    | Heads up! LangGraph dev identified a synchronous blocking call in your code. When running in an ASGI web server, blocking calls can degrade performance for everyone since they tie up the event loop.
-    | 
-    | Here are your options to fix this:
-    | 
-    | 1. Best approach: Convert any blocking code to use async/await patterns
-    |    For example, use 'await aiohttp.get()' instead of 'requests.get()'
-    | 
-    | 2. Quick fix: Move blocking operations to a separate thread
-    |    Example: 'await asyncio.to_thread(your_blocking_function)'
-    | 
-    | 3. Override (if you can't change the code):
-    |    - For development: Run 'langgraph dev --allow-blocking'
-    |    - For deployment: Set 'BG_JOB_ISOLATED_LOOPS=true' environment variable
-    | 
-    | These blocking operations can prevent health checks and slow down other runs in your deployment. Following these recommendations will help keep your LangGraph application running smoothly!
-    +------------------------------------
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    result = await app(  # type: ignore[func-returns-value]
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        self.scope, self.receive, self.send
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    return await self.app(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    await self.app(scope, receive, _send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    with recv_stream, send_stream, collapse_excgroups():
-                                   ~~~~~~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    self.gen.throw(value)
-    ~~~~~~~~~~~~~~^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    response = await self.dispatch_func(request, call_next)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    response = await call_next(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    raise app_exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    await self.app(scope, receive_or_disconnect, send_no_error)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    await self.simple_response(scope, receive, send, request_headers=headers)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    await self.app(scope, inner_receive, inner_send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    return await super().__call__(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    return await super().handle(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    response: ASGIApp = await func(request)
-                        ^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    return await func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 354, in get_assistant_schemas
-    async with get_graph(
-               ~~~~~~~~~^
-        assistant["graph_id"],
-        ^^^^^^^^^^^^^^^^^^^^^^
-    ...<2 lines>...
-        store=(await api_store.get_store()),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ) as graph:
-    ^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    async with _generate_graph(value) as graph_obj:
-               ~~~~~~~~~~~~~~~^^^^^^^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    yield await value
-          ^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 100, in async_answer
-    chain = _build_chain()
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 77, in _build_chain
-    retriever = _load_retriever_if_available()
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 39, in _load_retriever_if_available
-    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 69, in __init__
-    import sentence_transformers  # type: ignore[import]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/__init__.py", line 10, in <module>
-    from sentence_transformers.backend import (
-    ...<3 lines>...
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/__init__.py", line 5, in <module>
-    from .quantize import export_dynamic_quantized_onnx_model, export_static_quantized_openvino_model
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/quantize.py", line 7, in <module>
-    from sentence_transformers.util import disable_datasets_caching, is_datasets_available
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/__init__.py", line 15, in <module>
-    from .retrieval import (
-    ...<5 lines>...
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/retrieval.py", line 13, in <module>
-    from .similarity import cos_sim
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/similarity.py", line 5, in <module>
-    from sklearn.metrics import pairwise_distances
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/__init__.py", line 73, in <module>
-    from .base import clone  # noqa: E402
-    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/base.py", line 19, in <module>
-    from .utils._metadata_requests import _MetadataRequester, _routing_enabled
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/__init__.py", line 23, in <module>
-    from ._repr_html.estimator import estimator_html_repr
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 38, in <module>
-    _CSS_STYLE = _get_css_style()
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 30, in _get_css_style
-    estimator_css = estimator_css_file.read_text(encoding="utf-8")
-  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
-    return PathBase.read_text(self, encoding, errors, newline)
-           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/pathlib/_abc.py", line 633, in read_text
-    return f.read()
-           ~~~~~~^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/blockbuster/blockbuster.py", line 109, in wrapper
-    raise BlockingError(func_name)
-blockbuster.blockbuster.BlockingError: Blocking call to io.TextIOWrapper.read
-
-Heads up! LangGraph dev identified a synchronous blocking call in your code. When running in an ASGI web server, blocking calls can degrade performance for everyone since they tie up the event loop.
-
-Here are your options to fix this:
-
-1. Best approach: Convert any blocking code to use async/await patterns
-   For example, use 'await aiohttp.get()' instead of 'requests.get()'
-
-2. Quick fix: Move blocking operations to a separate thread
-   Example: 'await asyncio.to_thread(your_blocking_function)'
-
-3. Override (if you can't change the code):
-   - For development: Run 'langgraph dev --allow-blocking'
-   - For deployment: Set 'BG_JOB_ISOLATED_LOOPS=true' environment variable
-
-These blocking operations can prevent health checks and slow down other runs in your deployment. Following these recommendations will help keep your LangGraph application running smoothly!
-[2m2025-10-12T18:33:38.594425Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 500 130ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m130[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:38.595080Z[0m [[31m[1merror    [0m] [1mException in ASGI application
-[0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-  + Exception Group Traceback (most recent call last):
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
-  |     yield
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 183, in __call__
-  |     async with anyio.create_task_group() as task_group:
-  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
-  |     raise BaseExceptionGroup(
-  |         "unhandled errors in a TaskGroup", self._exceptions
-  |     ) from None
-  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
-  +-+---------------- 1 ----------------
-    | Traceback (most recent call last):
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    |     result = await app(  # type: ignore[func-returns-value]
-    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |         self.scope, self.receive, self.send
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     )
-    |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    |     return await self.app(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    |     await self.app(scope, receive, _send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    |     with recv_stream, send_stream, collapse_excgroups():
-    |                                    ~~~~~~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    |     self.gen.throw(value)
-    |     ~~~~~~~~~~~~~~^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    |     response = await self.dispatch_func(request, call_next)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    |     response = await call_next(request)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    |     raise app_exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    |     await self.app(scope, receive_or_disconnect, send_no_error)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    |     await self.simple_response(scope, receive, send, request_headers=headers)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    |     await self.app(scope, inner_receive, inner_send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    |     return await super().__call__(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    |     return await super().handle(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    |     response: ASGIApp = await func(request)
-    |                         ^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    |     return await func(*args, **kwargs)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 354, in get_assistant_schemas
-    |     async with get_graph(
-    |                ~~~~~~~~~^
-    |         assistant["graph_id"],
-    |         ^^^^^^^^^^^^^^^^^^^^^^
-    |     ...<2 lines>...
-    |         store=(await api_store.get_store()),
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     ) as graph:
-    |     ^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    |     async with _generate_graph(value) as graph_obj:
-    |                ~~~~~~~~~~~~~~~^^^^^^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    |     yield await value
-    |           ^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 100, in async_answer
-    |     chain = _build_chain()
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 77, in _build_chain
-    |     retriever = _load_retriever_if_available()
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 39, in _load_retriever_if_available
-    |     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 69, in __init__
-    |     import sentence_transformers  # type: ignore[import]
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/__init__.py", line 10, in <module>
-    |     from sentence_transformers.backend import (
-    |     ...<3 lines>...
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/__init__.py", line 5, in <module>
-    |     from .quantize import export_dynamic_quantized_onnx_model, export_static_quantized_openvino_model
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/quantize.py", line 7, in <module>
-    |     from sentence_transformers.util import disable_datasets_caching, is_datasets_available
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/__init__.py", line 15, in <module>
-    |     from .retrieval import (
-    |     ...<5 lines>...
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/retrieval.py", line 13, in <module>
-    |     from .similarity import cos_sim
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/similarity.py", line 5, in <module>
-    |     from sklearn.metrics import pairwise_distances
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/__init__.py", line 73, in <module>
-    |     from .base import clone  # noqa: E402
-    |     ^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/base.py", line 23, in <module>
-    |     from .utils._repr_html.estimator import estimator_html_repr
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 38, in <module>
-    |     _CSS_STYLE = _get_css_style()
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 30, in _get_css_style
-    |     estimator_css = estimator_css_file.read_text(encoding="utf-8")
-    |   File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
-    |     return PathBase.read_text(self, encoding, errors, newline)
-    |            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/lib/python3.13/pathlib/_abc.py", line 633, in read_text
-    |     return f.read()
-    |            ~~~~~~^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/blockbuster/blockbuster.py", line 109, in wrapper
-    |     raise BlockingError(func_name)
-    | blockbuster.blockbuster.BlockingError: Blocking call to io.TextIOWrapper.read
-    | 
-    | Heads up! LangGraph dev identified a synchronous blocking call in your code. When running in an ASGI web server, blocking calls can degrade performance for everyone since they tie up the event loop.
-    | 
-    | Here are your options to fix this:
-    | 
-    | 1. Best approach: Convert any blocking code to use async/await patterns
-    |    For example, use 'await aiohttp.get()' instead of 'requests.get()'
-    | 
-    | 2. Quick fix: Move blocking operations to a separate thread
-    |    Example: 'await asyncio.to_thread(your_blocking_function)'
-    | 
-    | 3. Override (if you can't change the code):
-    |    - For development: Run 'langgraph dev --allow-blocking'
-    |    - For deployment: Set 'BG_JOB_ISOLATED_LOOPS=true' environment variable
-    | 
-    | These blocking operations can prevent health checks and slow down other runs in your deployment. Following these recommendations will help keep your LangGraph application running smoothly!
-    +------------------------------------
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    result = await app(  # type: ignore[func-returns-value]
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        self.scope, self.receive, self.send
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    return await self.app(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    await self.app(scope, receive, _send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    with recv_stream, send_stream, collapse_excgroups():
-                                   ~~~~~~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    self.gen.throw(value)
-    ~~~~~~~~~~~~~~^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    response = await self.dispatch_func(request, call_next)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    response = await call_next(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    raise app_exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    await self.app(scope, receive_or_disconnect, send_no_error)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    await self.simple_response(scope, receive, send, request_headers=headers)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    await self.app(scope, inner_receive, inner_send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    return await super().__call__(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    return await super().handle(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    response: ASGIApp = await func(request)
-                        ^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    return await func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 354, in get_assistant_schemas
-    async with get_graph(
-               ~~~~~~~~~^
-        assistant["graph_id"],
-        ^^^^^^^^^^^^^^^^^^^^^^
-    ...<2 lines>...
-        store=(await api_store.get_store()),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ) as graph:
-    ^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    async with _generate_graph(value) as graph_obj:
-               ~~~~~~~~~~~~~~~^^^^^^^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    yield await value
-          ^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 100, in async_answer
-    chain = _build_chain()
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 77, in _build_chain
-    retriever = _load_retriever_if_available()
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 39, in _load_retriever_if_available
-    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 69, in __init__
-    import sentence_transformers  # type: ignore[import]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/__init__.py", line 10, in <module>
-    from sentence_transformers.backend import (
-    ...<3 lines>...
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/__init__.py", line 5, in <module>
-    from .quantize import export_dynamic_quantized_onnx_model, export_static_quantized_openvino_model
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/backend/quantize.py", line 7, in <module>
-    from sentence_transformers.util import disable_datasets_caching, is_datasets_available
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/__init__.py", line 15, in <module>
-    from .retrieval import (
-    ...<5 lines>...
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/retrieval.py", line 13, in <module>
-    from .similarity import cos_sim
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sentence_transformers/util/similarity.py", line 5, in <module>
-    from sklearn.metrics import pairwise_distances
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/__init__.py", line 73, in <module>
-    from .base import clone  # noqa: E402
-    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/base.py", line 23, in <module>
-    from .utils._repr_html.estimator import estimator_html_repr
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 38, in <module>
-    _CSS_STYLE = _get_css_style()
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/sklearn/utils/_repr_html/estimator.py", line 30, in _get_css_style
-    estimator_css = estimator_css_file.read_text(encoding="utf-8")
-  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
-    return PathBase.read_text(self, encoding, errors, newline)
-           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/pathlib/_abc.py", line 633, in read_text
-    return f.read()
-           ~~~~~~^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/blockbuster/blockbuster.py", line 109, in wrapper
-    raise BlockingError(func_name)
-blockbuster.blockbuster.BlockingError: Blocking call to io.TextIOWrapper.read
-
-Heads up! LangGraph dev identified a synchronous blocking call in your code. When running in an ASGI web server, blocking calls can degrade performance for everyone since they tie up the event loop.
-
-Here are your options to fix this:
-
-1. Best approach: Convert any blocking code to use async/await patterns
-   For example, use 'await aiohttp.get()' instead of 'requests.get()'
-
-2. Quick fix: Move blocking operations to a separate thread
-   Example: 'await asyncio.to_thread(your_blocking_function)'
-
-3. Override (if you can't change the code):
-   - For development: Run 'langgraph dev --allow-blocking'
-   - For deployment: Set 'BG_JOB_ISOLATED_LOOPS=true' environment variable
-
-These blocking operations can prevent health checks and slow down other runs in your deployment. Following these recommendations will help keep your LangGraph application running smoothly!
-[2m2025-10-12T18:33:38.652830Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T18:33:39.004343Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:41.311166Z[0m [[32m[1minfo     [0m] [1mURL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
+[2m2025-10-12T18:40:41.532870Z[0m [[32m[1minfo     [0m] [1m4 changes detected            [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:41.780159Z[0m [[32m[1minfo     [0m] [1mQueue stats                   [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax_age_secs[0m=[35mNone[0m [36mmed_age_secs[0m=[35mNone[0m [36mn_pending[0m=[35m0[0m [36mn_running[0m=[35m0[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:40:41.883712Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:42.234261Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:42.584811Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:42.935387Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:43.213106Z[0m [[32m[1minfo     [0m] [1mGetting auth instance: None   [0m [[0m[1m[34mlanggraph_api.auth.custom[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_auth[0m=[35mNone[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/assistants/search[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:43.285946Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:43.636642Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:43.987288Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:44.337908Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:44.561771Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:40:44.562380Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:40:44.563633Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:40:44.566469Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:40:44.688602Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:45.039452Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:45.390606Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:45.741575Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:46.092171Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:46.442921Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:46.793616Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:47.144268Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:47.494807Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:47.845378Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:48.195976Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:48.546588Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:48.897391Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:49.248291Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:49.598940Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:49.639779Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 6177ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m6177[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:49.641278Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 424 6125ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m6125[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:49.949513Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:49.967572Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 6737ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m6737[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:49.968505Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 6753ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m6753[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:50.300262Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:50.651364Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:50.914543Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:40:51.002530Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:51.173431Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:40:51.353565Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:51.545104Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:40:51.704809Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:51.739575Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:40:52.055942Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:52.406909Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:52.757815Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:53.108857Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:53.459475Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:53.810201Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:54.160839Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:54.511345Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:54.527127Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 3615ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3615[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:54.805539Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 3634ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3634[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:54.861907Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:55.212448Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:55.563026Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:55.889856Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 424 4346ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4346[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:55.913805Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:56.264783Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:56.533379Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 4796ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4796[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:56.534531Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:40:56.615758Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:56.966788Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:57.184091Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:40:57.318081Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:57.669162Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:58.020096Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:58.370967Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:58.721958Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:59.072680Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:40:59.084147Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 2551ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2551[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:59.192972Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:40:59.423575Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:40:59.774357Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:00.064955Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:41:00.125231Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:00.473944Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 3291ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3291[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:00.476469Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:00.827496Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:01.178456Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:01.529128Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:01.880131Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:02.231733Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:02.582397Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:02.761806Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 424 3571ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3571[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:02.933394Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:03.283226Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 3220ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3220[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:03.284543Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:03.635389Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:03.986485Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:04.042515Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:41:04.337573Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:04.688762Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:05.039951Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:05.391179Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:05.741720Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:06.092553Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:06.443356Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:06.515670Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 2475ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2475[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:06.794132Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:07.145185Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:07.496302Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:07.847425Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:07.861805Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:41:07.947335Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:41:08.198461Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:08.549657Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:08.900720Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:09.251587Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:09.602260Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:09.959175Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:10.309858Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:10.449112Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:41:10.660535Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:10.674469Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 424 2814ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2814[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:11.011343Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:11.362349Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:11.399556Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 3454ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3454[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:11.713253Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:12.064206Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:12.414956Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:12.765945Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:13.116766Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:13.122447Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 2674ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2674[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:13.467560Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:13.818593Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:14.169600Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:14.520494Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:14.871727Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:15.222844Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:15.574014Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:15.925128Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:16.276218Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:16.627633Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:16.978833Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:17.330098Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:17.681226Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:18.032214Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:18.383309Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:18.734430Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:19.085465Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:19.399085Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:41:19.436378Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:19.787282Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:19.788558Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:41:20.138423Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:20.489489Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:20.840523Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:21.191406Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:21.542359Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:21.893118Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:22.244059Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:22.594644Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:22.865966Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 424 3469ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3469[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:22.945270Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:23.080106Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:41:23.296082Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:23.603126Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 3817ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3817[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:23.647007Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:23.998016Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:24.348982Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:24.699747Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:25.050541Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:25.401561Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:25.752556Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:25.762437Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 2690ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2690[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:26.103359Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:26.454352Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:26.805263Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:27.156382Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:27.507440Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:27.539796Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:41:27.858597Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:28.209799Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:28.561058Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:28.912487Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:29.263510Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:29.614361Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:29.965528Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:30.239950Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 2701ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2701[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:30.316589Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:30.667674Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:31.018552Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:31.369112Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:31.719905Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:32.070972Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:32.421982Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:32.773082Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:33.124358Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:33.475456Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:33.826615Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:34.177780Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:34.529032Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:34.880395Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:35.231551Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:35.582844Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:35.934283Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:36.285744Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:36.637252Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:36.988768Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:37.340118Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:37.691295Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:38.042721Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:38.394043Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:38.745525Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:39.097055Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:39.448311Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:39.799487Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:40.150973Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:40.502170Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:40.853322Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:41.204715Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:41.492012Z[0m [[32m[1minfo     [0m] [1mWorker stats                  [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mactive[0m=[35m0[0m [36mapi_variant[0m=[35mlocal_dev[0m [36mavailable[0m=[35m1[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax[0m=[35m1[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:41:41.555825Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:41.906934Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:41.993450Z[0m [[32m[1minfo     [0m] [1mQueue stats                   [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax_age_secs[0m=[35mNone[0m [36mmed_age_secs[0m=[35mNone[0m [36mn_pending[0m=[35m0[0m [36mn_running[0m=[35m0[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:41:42.257854Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:42.608807Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:42.959735Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:43.310989Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:43.662461Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:44.013506Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:44.364403Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:44.715304Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:45.055923Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:41:45.066219Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:45.070966Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T18:41:45.074817Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:41:45.417190Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:45.768119Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:46.119060Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:46.470101Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:46.821108Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:47.171950Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:47.522667Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:47.873417Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:48.224024Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:48.574817Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:48.914207Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 3841ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m3841[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:48.925768Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:49.276500Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:49.500330Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 4445ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4445[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:49.627201Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:49.694945Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 424 4624ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4624[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:49.977988Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:50.328877Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:50.653144Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mthread_name[0m=[35masyncio_3[0m
+[2m2025-10-12T18:41:50.679793Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:50.923628Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_2[0m
+[2m2025-10-12T18:41:51.030745Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:51.369303Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T18:41:51.381572Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:51.732713Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:52.083764Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:52.434353Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:52.784925Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:53.135522Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:53.383006Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 424 2731ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2731[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:53.486229Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:53.836965Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+Error procesando la pregunta: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2m2025-10-12T18:41:53.847886Z[0m [[33m[1mwarning  [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 424 2926ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m2926[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m424[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:54.187484Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:54.538398Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T18:41:54.889669Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m

@@ -1,7 +1,7 @@
 # src/agents/rag.py
 import os
 import asyncio
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -34,10 +34,22 @@ TEMPERATURE = float(os.getenv("TEMPERATURE", "0.1"))
 def _format_docs(docs: List[Document]) -> str:
     return "\n\n".join(d.page_content for d in docs) if docs else ""
 
-def _load_retriever_if_available():
-    """Carga el retriever sólo si el índice existe. Si no, devuelve None (no rompe el server)."""
-    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+def _load_embeddings_sync():
+    """Carga embeddings de forma síncrona con configuración para evitar errores de CUDA"""
+    # Forzar CPU para evitar problemas con meta tensors
+    os.environ["CUDA_VISIBLE_DEVICES"] = ""
+    return HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL,
+        model_kwargs={'device': 'cpu'},  # Forzar CPU
+        encode_kwargs={'normalize_embeddings': True}
+    )
 
+async def _load_embeddings():
+    """Carga embeddings de forma asíncrona"""
+    return await asyncio.to_thread(_load_embeddings_sync)
+
+def _load_retriever_sync(embeddings):
+    """Carga el retriever de forma síncrona"""
     idx_path = os.path.join(FAISS_INDEX_DIR)
     faiss_file = os.path.join(idx_path, f"{FAISS_INDEX_NAME}.faiss")
     pkl_file = os.path.join(idx_path, f"{FAISS_INDEX_NAME}.pkl")
@@ -52,7 +64,13 @@ def _load_retriever_if_available():
         return vs.as_retriever(search_kwargs={"k": 4})
     return None
 
+async def _load_retriever_if_available():
+    """Carga el retriever sólo si el índice existe."""
+    embeddings = await _load_embeddings()
+    return await asyncio.to_thread(_load_retriever_sync, embeddings)
+
 def _get_llm():
+    """Obtiene el LLM - esta inicialización es liviana"""
     return ChatOllama(
         model=MODEL,
         base_url=OLLAMA_BASE_URL,
@@ -73,21 +91,98 @@ PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
-def _build_chain():
-    retriever = _load_retriever_if_available()
+# Cache para el retriever y embeddings
+_retriever_cache = None
+_embeddings_cache = None
+
+def _prepare_inputs(inputs: Any) -> Dict[str, str]:
+    """Prepara los inputs asegurando que siempre sean strings"""
+    if isinstance(inputs, dict):
+        question = inputs.get("question", "")
+        # Asegurar que question es string
+        if not isinstance(question, str):
+            question = str(question)
+        return {"question": question}
+    else:
+        # Si no es dict, convertirlo a string
+        return {"question": str(inputs)}
+
+def _retrieve_context(question: str, retriever) -> str:
+    """Ejecuta la recuperación de documentos"""
+    if not retriever or not question:
+        return ""
+    
+    try:
+        # Usar invoke en lugar del método deprecated
+        docs = retriever.invoke(question)
+        return _format_docs(docs)
+    except Exception as e:
+        print(f"Error en recuperación: {e}")
+        return ""
+
+def _build_chain_sync(retriever):
+    """Construye la cadena de forma síncrona"""
     llm = _get_llm()
 
-    def _prepare(inputs):
-        # Asegura que siempre trabajamos con un string (evita el error .replace sobre dict)
-        q = inputs["question"] if isinstance(inputs, dict) else str(inputs)
-        if retriever:
-            docs = retriever.get_relevant_documents(q)
-            ctx = _format_docs(docs)
-        else:
-            ctx = ""  # sin índice todavía: el LLM responderá sin contexto
-        return {"question": q, "context": ctx}
+    def _prepare_with_retriever(inputs: Dict[str, Any]) -> Dict[str, Any]:
+        """Prepara inputs incluyendo el retriever"""
+        prepared = _prepare_inputs(inputs)
+        return {
+            "question": prepared["question"],
+            "retriever": retriever
+        }
 
-    return RunnableLambda(_prepare) | PROMPT | llm | StrOutputParser()
+    def _retrieve_and_format(inputs: Dict[str, Any]) -> Dict[str, str]:
+        """Ejecuta la recuperación y formatea los documentos"""
+        question = inputs["question"]
+        retriever_obj = inputs.get("retriever")
+        
+        context = _retrieve_context(question, retriever_obj)
+        
+        return {
+            "question": question,
+            "context": context
+        }
+
+    # Si no hay retriever, usar cadena simple sin RAG
+    if not retriever:
+        def _simple_chain(inputs: Dict[str, Any]) -> Dict[str, str]:
+            prepared = _prepare_inputs(inputs)
+            return {
+                "question": prepared["question"],
+                "context": ""
+            }
+        return (
+            RunnableLambda(_simple_chain) 
+            | PROMPT 
+            | llm 
+            | StrOutputParser()
+        )
+    else:
+        # Cadena completa con RAG
+        return (
+            RunnableLambda(_prepare_with_retriever)
+            | RunnableLambda(_retrieve_and_format)
+            | PROMPT
+            | llm
+            | StrOutputParser()
+        )
+
+async def _build_chain():
+    """Construye la cadena de forma asíncrona"""
+    global _retriever_cache
+    
+    # Cargar retriever una sola vez y cachearlo
+    if _retriever_cache is None:
+        _retriever_cache = await _load_retriever_if_available()
+    
+    retriever = _retriever_cache
+    
+    # Construir la cadena síncrona en un thread
+    return await asyncio.to_thread(_build_chain_sync, retriever)
+
+# Cache para la cadena
+_chain_cache = None
 
 # -------------------------
 # Punto de entrada (usado por langgraph.json)
@@ -95,8 +190,46 @@ def _build_chain():
 async def async_answer(question: str) -> str:
     """
     Entrada asíncrona simple para LangGraph API.
-    No realiza cargas pesadas al importar el módulo.
     """
-    chain = _build_chain()
-    # Ejecuta en thread para no bloquear el loop si el conector hace I/O
-    return await asyncio.to_thread(chain.invoke, {"question": question})
+    global _chain_cache
+    
+    try:
+        # Construir la cadena una sola vez
+        if _chain_cache is None:
+            _chain_cache = await _build_chain()
+        
+        chain = _chain_cache
+        
+        # Asegurar que la pregunta es string
+        if not isinstance(question, str):
+            question = str(question)
+        
+        # Ejecutar la cadena
+        result = await asyncio.to_thread(
+            chain.invoke, 
+            {"question": question}
+        )
+        
+        return result
+        
+    except Exception as e:
+        # Manejo de errores robusto
+        error_msg = f"Error procesando la pregunta: {str(e)}"
+        print(error_msg)
+        return f"Lo siento, ocurrió un error al procesar tu pregunta. {error_msg}"
+
+# Función opcional para limpiar la cache si es necesario
+async def clear_cache():
+    """Limpia la cache del retriever y la cadena"""
+    global _retriever_cache, _chain_cache, _embeddings_cache
+    _retriever_cache = None
+    _chain_cache = None
+    _embeddings_cache = None
+
+# Función para verificar si el índice existe
+async def check_index_exists() -> bool:
+    """Verifica si el índice FAISS existe"""
+    idx_path = os.path.join(FAISS_INDEX_DIR)
+    faiss_file = os.path.join(idx_path, f"{FAISS_INDEX_NAME}.faiss")
+    pkl_file = os.path.join(idx_path, f"{FAISS_INDEX_NAME}.pkl")
+    return os.path.exists(faiss_file) and os.path.exists(pkl_file)
