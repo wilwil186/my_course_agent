@@ -2,7 +2,8 @@
   "dependencies": ["."],
   "graphs": {
     "agent": "./src/agents/main.py:app",
-    "simple": "./src/agents/simple.py:app"
+    "simple": "./src/agents/simple.py:app",
+    "rag": "./src/agents/rag.py:async_answer"
   },
   "env": ".env"
 }

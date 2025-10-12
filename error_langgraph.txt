@@ -1,0 +1,107 @@
+INFO:langgraph_api.cli:
+
+        Welcome to
+
+╦  ┌─┐┌┐┌┌─┐╔═╗┬─┐┌─┐┌─┐┬ ┬
+║  ├─┤││││ ┬║ ╦├┬┘├─┤├─┘├─┤
+╩═╝┴ ┴┘└┘└─┘╚═╝┴└─┴ ┴┴  ┴ ┴
+
+- 🚀 API: [36mhttp://127.0.0.1:2024[0m
+- 🎨 Studio UI: [36mhttps://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024[0m
+- 📚 API Docs: [36mhttp://127.0.0.1:2024/docs[0m
+
+This in-memory server is designed for development and testing.
+For production use, please use LangGraph Platform.
+
+
+[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)
+[2m2025-10-12T01:00:50.285581Z[0m [[32m[1minfo     [0m] [1m[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)[0m [[0m[1m[34mversion_check[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)'[0m [36mthread_name[0m=[35m'Thread-3 (_check_newer_version)'[0m
+[2m2025-10-12T01:00:50.501701Z[0m [[32m[1minfo     [0m] [1mUsing langgraph_runtime_inmem [0m [[0m[1m[34mlanggraph_runtime[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:50.506674Z[0m [[32m[1minfo     [0m] [1mUsing auth of type=noop       [0m [[0m[1m[34mlanggraph_api.auth.middleware[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:50.508396Z[0m [[32m[1minfo     [0m] [1mStarting In-Memory runtime with langgraph-api=0.4.35 and in-memory runtime=0.14.1[0m [[0m[1m[34mlanggraph_runtime_inmem.lifespan[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_runtime_inmem_version[0m=[35m0.14.1[0m [36mthread_name[0m=[35masyncio_0[0m [36mversion[0m=[35m0.4.35[0m
+[2m2025-10-12T01:00:50.522390Z[0m [[32m[1minfo     [0m] [1mStarting thread TTL sweeper with interval 5 minutes[0m [[0m[1m[34mlanggraph_api.thread_ttl[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36minterval_minutes[0m=[35m5[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mstrategy[0m=[35mdelete[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T01:00:50.594642Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:50.945269Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:51.295804Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:51.646213Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:51.996724Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:52.001772Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'agent'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35magent[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T01:00:52.018509Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'simple'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35msimple[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T01:00:52.033618Z[0m [[32m[1minfo     [0m] [1mShutting down remote graphs   [0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:52.042437Z[0m [[31m[1merror    [0m] [1mTraceback (most recent call last):
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 420, in collect_graphs_from_env
+    graph = await run_in_executor(None, _graph_from_spec, spec)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/utils/config.py", line 144, in run_in_executor
+    return await asyncio.get_running_loop().run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/utils/config.py", line 135, in wrapper
+    return func(*args, **kwargs)
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 469, in _graph_from_spec
+    modspec.loader.exec_module(module)  # type: ignore[possibly-unbound-attribute]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 16, in <module>
+    from langchain_huggingface import HuggingFaceEmbeddings
+ModuleNotFoundError: No module named 'langchain_huggingface'
+Could not import python module for graph:
+GraphSpec(id='rag', path='./src/agents/rag.py', module=None, variable='async_answer', config={}, description=None)
+This error likely means you haven't installed your project and its dependencies yet. Before running the server, install your project:
+
+If you are using requirements.txt:
+python -m pip install -r requirements.txt
+
+If you are using pyproject.toml or setuptools:
+python -m pip install -e .
+
+Make sure to run this command from your project's root directory (where your setup.py or pyproject.toml is located)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/lifespan.py", line 80, in lifespan
+    await graph.collect_graphs_from_env(True)
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 422, in collect_graphs_from_env
+    raise GraphLoadError(spec, exc) from exc
+langgraph_api.utils.errors.GraphLoadError: Failed to load graph 'rag' from ./src/agents/rag.py: No module named 'langchain_huggingface'
+[0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:52.042645Z[0m [[31m[1merror    [0m] [1mApplication startup failed. Exiting.[0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:52.347572Z[0m [[32m[1minfo     [0m] [1m22 changes detected           [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:52.698688Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:53.049933Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:53.401141Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:53.752190Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:54.103202Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:54.454144Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:54.805079Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:55.156238Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:55.507400Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:55.858531Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:56.209635Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:56.560703Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:56.911819Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:57.262907Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:57.614066Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:57.965183Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:58.316317Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:58.667547Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:59.019014Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:59.370299Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:00:59.721807Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:01:00.072879Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:01:00.423920Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:01:00.775022Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:01:01.126083Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T01:01:01.477389Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m

@@ -7,15 +7,20 @@ requires-python = ">=3.13"
 
 # Dependencias principales (producción)
 dependencies = [
+    "faiss-cpu>=1.8.0",
     "langchain>=0.3",
     "langchain-anthropic>=0.3.22",
+    "langchain-community>=0.3",
     "langchain-core>=0.3",
-    "langchain-ollama>=0.3",
+    "langchain-ollama>=0.1.0",
     "langchain-openai>=0.3.35",
+    "langchain-text-splitters>=0.3.11",
     "langgraph>=0.2",
     "langgraph-api>=0.4.35",
     "pydantic<3",
+    "pypdf>=4.2.0",
     "python-dotenv>=1.0",
+    "sentence-transformers>=2.2",
 ]
 
 # Dependencias de desarrollo
