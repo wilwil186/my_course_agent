@@ -1,163 +1,102 @@
 # src/agents/rag.py
-# -*- coding: utf-8 -*-
-"""
-RAG minimal y robusto para LangGraph API.
-
-Arregla el bug:
-AttributeError: 'dict' object has no attribute 'replace'
-causado porque el retriever recibía un dict en lugar de un string.
-
-Puntos clave del fix:
-- El retriever SOLO recibe la cadena de la pregunta (itemgetter("question")).
-- Wrapper defensivo por si invoke recibe un dict u otro tipo.
-- Mantiene la interfaz async_answer(question: str) usada por el resto del proyecto.
-"""
-
-from __future__ import annotations
-
 import os
 import asyncio
-from typing import Any, Dict, Union
-from operator import itemgetter
+from typing import List, Optional
 
-# LangChain core
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.documents import Document
 from langchain_core.runnables import RunnableLambda
 
-# Vector store + embeddings
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
-# LLM (ajusta si usas otro proveedor)
-# Si usas OpenAI oficial, asegúrate de tener OPENAI_API_KEY en el entorno.
-from langchain_openai import ChatOpenAI
+# ChatOllama: usa el paquete disponible
+try:
+    from langchain_ollama import ChatOllama  # paquete nuevo
+except Exception:
+    from langchain_community.chat_models import ChatOllama  # fallback
 
-
-# ----------------------------
-# Configuración
-# ----------------------------
-
+# -------------------------
+# Config
+# -------------------------
+FAISS_INDEX_DIR = os.getenv("FAISS_INDEX_DIR", "data/faiss_index")
+FAISS_INDEX_NAME = os.getenv("FAISS_INDEX_NAME", "index")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "intfloat/multilingual-e5-small")
-FAISS_INDEX_DIR = os.getenv("FAISS_INDEX_DIR", "data/faiss_index")  # cambia a tu ruta
-RETRIEVER_K = int(os.getenv("RETRIEVER_K", "4"))
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+MODEL = os.getenv("MODEL", "qwen2.5:7b-instruct")
+TEMPERATURE = float(os.getenv("TEMPERATURE", "0.1"))
 
-# ----------------------------
-# Utilidades
-# ----------------------------
+# -------------------------
+# Utils
+# -------------------------
+def _format_docs(docs: List[Document]) -> str:
+    return "\n\n".join(d.page_content for d in docs) if docs else ""
 
-def _get_embeddings() -> HuggingFaceEmbeddings:
-    # Usa el mismo modelo que empleaste al indexar.
-    return HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+def _load_retriever_if_available():
+    """Carga el retriever sólo si el índice existe. Si no, devuelve None (no rompe el server)."""
+    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 
+    idx_path = os.path.join(FAISS_INDEX_DIR)
+    faiss_file = os.path.join(idx_path, f"{FAISS_INDEX_NAME}.faiss")
+    pkl_file = os.path.join(idx_path, f"{FAISS_INDEX_NAME}.pkl")
 
-def _load_vectorstore() -> FAISS:
-    embeddings = _get_embeddings()
-    # allow_dangerous_deserialization=True es habitual al cargar FAISS local
-    return FAISS.load_local(
-        FAISS_INDEX_DIR,
-        embeddings,
-        allow_dangerous_deserialization=True,
-    )
-
-
-def _get_retriever():
-    vs = _load_vectorstore()
-    return vs.as_retriever(search_type="similarity", k=RETRIEVER_K)
-
+    if os.path.exists(faiss_file) and os.path.exists(pkl_file):
+        vs = FAISS.load_local(
+            idx_path,
+            embeddings,
+            index_name=FAISS_INDEX_NAME,
+            allow_dangerous_deserialization=True,
+        )
+        return vs.as_retriever(search_kwargs={"k": 4})
+    return None
 
 def _get_llm():
-    # Ajusta aquí si usas otro proveedor (Ollama, Azure, etc.)
-    # Este constructor requiere OPENAI_API_KEY en el entorno.
-    return ChatOpenAI(model=OPENAI_MODEL, temperature=0)
-
-
-def _get_prompt() -> ChatPromptTemplate:
-    system = (
-        "Eres un asistente que responde de forma concisa y cita hechos "
-        "solo desde el CONTEXTO si aplica. Si la respuesta no está en el "
-        "contexto, di que no tienes suficiente información."
-    )
-    user = (
-        "PREGUNTA: {question}\n\n"
-        "CONTEXTO:\n{context}\n\n"
-        "RESPONDE:"
-    )
-    return ChatPromptTemplate.from_messages(
-        [("system", system), ("user", user)]
+    return ChatOllama(
+        model=MODEL,
+        base_url=OLLAMA_BASE_URL,
+        temperature=TEMPERATURE,
     )
 
-
-def _extract_question(x: Union[str, Dict[str, Any]]) -> str:
-    """
-    Wrapper defensivo: acepta dict o str y devuelve la pregunta como str.
-    Evita que el retriever reciba un dict (causa del AttributeError).
-    """
-    if isinstance(x, dict):
-        # Lo común en tu código: {"question": "..."}
-        if "question" in x:
-            return str(x["question"])
-        # Si viene con otra clave, intenta una heurística simple:
-        for k in ("query", "input", "prompt"):
-            if k in x:
-                return str(x[k])
-        # Último recurso: repr
-        return str(x)
-    return str(x)
-
-
-# ----------------------------
-# Construcción del RAG chain (LCEL)
-# ----------------------------
-
-# Componentes
-_retriever = _get_retriever()
-_llm = _get_llm()
-_prompt = _get_prompt()
-_parser = StrOutputParser()
-
-# Runnable que garantiza string para el retriever/prompt
-_to_question = RunnableLambda(_extract_question)
-
-# Mapa de entrada -> {context, question}
-# CLAVE DEL FIX: el retriever recibe itemgetter("question") pasando por _to_question.
-RAG_CHAIN = (
-    {
-        "context": itemgetter("question") | _to_question | _retriever,
-        "question": itemgetter("question") | _to_question,
-    }
-    | _prompt
-    | _llm
-    | _parser
+PROMPT = ChatPromptTemplate.from_messages(
+    [
+        (
+            "system",
+            (
+                "Eres un asistente RAG. Usa únicamente el contexto cuando esté presente. "
+                "Si la respuesta no está en el contexto, dilo explícitamente.\n\n"
+                "Contexto:\n{context}"
+            ),
+        ),
+        ("human", "{question}"),
+    ]
 )
 
+def _build_chain():
+    retriever = _load_retriever_if_available()
+    llm = _get_llm()
 
-# ----------------------------
-# API pública
-# ----------------------------
+    def _prepare(inputs):
+        # Asegura que siempre trabajamos con un string (evita el error .replace sobre dict)
+        q = inputs["question"] if isinstance(inputs, dict) else str(inputs)
+        if retriever:
+            docs = retriever.get_relevant_documents(q)
+            ctx = _format_docs(docs)
+        else:
+            ctx = ""  # sin índice todavía: el LLM responderá sin contexto
+        return {"question": q, "context": ctx}
 
-def answer(question: str) -> str:
-    """
-    Versión síncrona por si se necesita en otros sitios.
-    """
-    return RAG_CHAIN.invoke({"question": question})
+    return RunnableLambda(_prepare) | PROMPT | llm | StrOutputParser()
 
-
+# -------------------------
+# Punto de entrada (usado por langgraph.json)
+# -------------------------
 async def async_answer(question: str) -> str:
     """
-    Interfaz usada por LangGraph API en tu proyecto (según el stacktrace).
-    Mantiene la misma firma, pero ahora el retriever recibe correctamente un string.
+    Entrada asíncrona simple para LangGraph API.
+    No realiza cargas pesadas al importar el módulo.
     """
-    return await asyncio.to_thread(RAG_CHAIN.invoke, {"question": question})
-
-
-# ----------------------------
-# Modo script (opcional)
-# ----------------------------
-
-if __name__ == "__main__":
-    import sys
-    q = " ".join(sys.argv[1:]) or "¿Qué hay en el índice?"
-    print(answer(q))
+    chain = _build_chain()
+    # Ejecuta en thread para no bloquear el loop si el conector hace I/O
+    return await asyncio.to_thread(chain.invoke, {"question": question})
