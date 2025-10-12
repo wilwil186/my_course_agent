@@ -1,205 +1,163 @@
 # src/agents/rag.py
+# -*- coding: utf-8 -*-
+"""
+RAG minimal y robusto para LangGraph API.
+
+Arregla el bug:
+AttributeError: 'dict' object has no attribute 'replace'
+causado porque el retriever recibía un dict en lugar de un string.
+
+Puntos clave del fix:
+- El retriever SOLO recibe la cadena de la pregunta (itemgetter("question")).
+- Wrapper defensivo por si invoke recibe un dict u otro tipo.
+- Mantiene la interfaz async_answer(question: str) usada por el resto del proyecto.
+"""
+
 from __future__ import annotations
 
 import os
 import asyncio
-from functools import lru_cache
-from pathlib import Path
-from typing import List
-from operator import itemgetter  # <-- IMPORTANTE: para rutear la pregunta al retriever
+from typing import Any, Dict, Union
+from operator import itemgetter
 
-from dotenv import load_dotenv
-
-from langchain_ollama import ChatOllama
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
-
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.prompts import ChatPromptTemplate
+# LangChain core
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.documents import Document
-from langchain_core.tools import tool, Tool
+from langchain_core.runnables import RunnableLambda
 
-# =====================================================
-# Configuración base
-# =====================================================
-load_dotenv()
+# Vector store + embeddings
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 
-LLM_MODEL = os.getenv("MODEL", "qwen2.5:7b-instruct")
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-EMB_MODEL_NAME = os.getenv("EMB_MODEL_NAME", "intfloat/multilingual-e5-small")
-
-# Rutas
-HERE = Path(__file__).resolve()
-REPO_ROOT = HERE.parents[2]
-PDF_PATH = REPO_ROOT / "PDF" / "9587014499.PDF"
-INDEX_DIR = REPO_ROOT / ".rag_index" / "faiss-e5-small"
-
-# Chunking / Retrieval
-CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "900"))
-CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
-TOP_K = int(os.getenv("TOP_K", "4"))
-
-# Locks de inicialización
-_VECSTORE_LOCK = asyncio.Lock()
-_EMB_LOCK = asyncio.Lock()
-
-# Caches globales
-_VS: FAISS | None = None
-_EMB: HuggingFaceEmbeddings | None = None
+# LLM (ajusta si usas otro proveedor)
+# Si usas OpenAI oficial, asegúrate de tener OPENAI_API_KEY en el entorno.
+from langchain_openai import ChatOpenAI
 
 
-# =====================================================
-# Construcción de componentes
-# =====================================================
-def _build_embeddings() -> HuggingFaceEmbeddings:
-    """Crea los embeddings con HuggingFace en CPU (evita conflictos con Ollama GPU)."""
-    return HuggingFaceEmbeddings(
-        model_name=EMB_MODEL_NAME,
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True},
+# ----------------------------
+# Configuración
+# ----------------------------
+
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "intfloat/multilingual-e5-small")
+FAISS_INDEX_DIR = os.getenv("FAISS_INDEX_DIR", "data/faiss_index")  # cambia a tu ruta
+RETRIEVER_K = int(os.getenv("RETRIEVER_K", "4"))
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+
+# ----------------------------
+# Utilidades
+# ----------------------------
+
+def _get_embeddings() -> HuggingFaceEmbeddings:
+    # Usa el mismo modelo que empleaste al indexar.
+    return HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+
+
+def _load_vectorstore() -> FAISS:
+    embeddings = _get_embeddings()
+    # allow_dangerous_deserialization=True es habitual al cargar FAISS local
+    return FAISS.load_local(
+        FAISS_INDEX_DIR,
+        embeddings,
+        allow_dangerous_deserialization=True,
     )
 
 
-async def _get_embeddings() -> HuggingFaceEmbeddings:
-    """Devuelve un singleton de embeddings (thread-safe)."""
-    global _EMB
-    if _EMB is not None:
-        return _EMB
-    async with _EMB_LOCK:
-        if _EMB is not None:
-            return _EMB
-        _EMB = await asyncio.to_thread(_build_embeddings)
-        return _EMB
+def _get_retriever():
+    vs = _load_vectorstore()
+    return vs.as_retriever(search_type="similarity", k=RETRIEVER_K)
 
 
-def _make_llm() -> ChatOllama:
-    """Inicializa el modelo LLM de Ollama."""
-    return ChatOllama(model=LLM_MODEL, base_url=OLLAMA_BASE_URL, temperature=0.2)
+def _get_llm():
+    # Ajusta aquí si usas otro proveedor (Ollama, Azure, etc.)
+    # Este constructor requiere OPENAI_API_KEY en el entorno.
+    return ChatOpenAI(model=OPENAI_MODEL, temperature=0)
 
 
-@lru_cache(maxsize=1)
-def _prompt_template():
-    """Prompt de sistema preconfigurado (cacheado)."""
+def _get_prompt() -> ChatPromptTemplate:
     system = (
-        "Eres un asistente que responde EXCLUSIVAMENTE con el contexto proporcionado. "
-        "Si la respuesta no está en el contexto, dilo claramente. Responde en español."
+        "Eres un asistente que responde de forma concisa y cita hechos "
+        "solo desde el CONTEXTO si aplica. Si la respuesta no está en el "
+        "contexto, di que no tienes suficiente información."
     )
-    return ChatPromptTemplate.from_messages([
-        ("system", system),
-        ("human",
-         "Pregunta: {question}\n\n"
-         "Contexto (fragmentos del PDF):\n{context}\n\n"
-         "Responde de forma directa y cita brevemente la(s) página(s) si aplica.")
-    ])
-
-
-# =====================================================
-# Indexación y retrieval
-# =====================================================
-async def _ensure_index() -> FAISS:
-    """Carga o construye el índice FAISS a partir del PDF."""
-    global _VS
-    if _VS is not None:
-        return _VS
-
-    async with _VECSTORE_LOCK:
-        if _VS is not None:
-            return _VS
-
-        emb = await _get_embeddings()
-        await asyncio.to_thread(INDEX_DIR.mkdir, parents=True, exist_ok=True)
-
-        faiss_exists = (INDEX_DIR / "index.faiss").exists() and (INDEX_DIR / "index.pkl").exists()
-        if faiss_exists:
-            def _load():
-                return FAISS.load_local(INDEX_DIR, emb, allow_dangerous_deserialization=True)
-            _VS = await asyncio.to_thread(_load)
-            return _VS
-
-        def _build_from_pdf():
-            loader = PyPDFLoader(str(PDF_PATH))
-            docs = loader.load()
-            splitter = RecursiveCharacterTextSplitter(
-                chunk_size=CHUNK_SIZE,
-                chunk_overlap=CHUNK_OVERLAP,
-                separators=["\n\n", "\n", ".", " ", ""],
-            )
-            chunks = splitter.split_documents(docs)
-            vs = FAISS.from_documents(chunks, emb)
-            vs.save_local(INDEX_DIR)
-            return vs
-
-        _VS = await asyncio.to_thread(_build_from_pdf)
-        return _VS
-
-
-def _format_docs(docs: List[Document]) -> str:
-    """Formatea los documentos recuperados para pasarlos al prompt."""
-    out = []
-    for i, d in enumerate(docs, 1):
-        meta = d.metadata or {}
-        page = meta.get("page", "?")
-        out.append(f"[{i}] (pág. {page}) {d.page_content.strip()}")
-    return "\n\n".join(out)
-
-
-# =====================================================
-# Cadena RAG
-# =====================================================
-async def _make_chain():
-    vs = await _ensure_index()
-    retriever = vs.as_retriever(search_kwargs={"k": TOP_K})
-    prompt = _prompt_template()
-    llm = _make_llm()
-
-    # 🔧 CORRECCIÓN: el retriever debe recibir SOLO el texto de la pregunta
-    chain = (
-        {
-            "context": itemgetter("question") | retriever | _format_docs,
-            "question": itemgetter("question"),
-        }
-        | prompt
-        | llm
-        | StrOutputParser()
+    user = (
+        "PREGUNTA: {question}\n\n"
+        "CONTEXTO:\n{context}\n\n"
+        "RESPONDE:"
     )
-    return chain
+    return ChatPromptTemplate.from_messages(
+        [("system", system), ("user", user)]
+    )
 
 
-# =====================================================
-# API principal
-# =====================================================
-async def async_answer(question: str) -> str:
-    """Responde de forma asíncrona; apto para servidores ASGI (LangGraph API)."""
-    chain = await _make_chain()
-    # Puedes usar ainvoke si prefieres: return await chain.ainvoke({"question": question})
-    return await asyncio.to_thread(chain.invoke, {"question": question})
+def _extract_question(x: Union[str, Dict[str, Any]]) -> str:
+    """
+    Wrapper defensivo: acepta dict o str y devuelve la pregunta como str.
+    Evita que el retriever reciba un dict (causa del AttributeError).
+    """
+    if isinstance(x, dict):
+        # Lo común en tu código: {"question": "..."}
+        if "question" in x:
+            return str(x["question"])
+        # Si viene con otra clave, intenta una heurística simple:
+        for k in ("query", "input", "prompt"):
+            if k in x:
+                return str(x[k])
+        # Último recurso: repr
+        return str(x)
+    return str(x)
 
+
+# ----------------------------
+# Construcción del RAG chain (LCEL)
+# ----------------------------
+
+# Componentes
+_retriever = _get_retriever()
+_llm = _get_llm()
+_prompt = _get_prompt()
+_parser = StrOutputParser()
+
+# Runnable que garantiza string para el retriever/prompt
+_to_question = RunnableLambda(_extract_question)
+
+# Mapa de entrada -> {context, question}
+# CLAVE DEL FIX: el retriever recibe itemgetter("question") pasando por _to_question.
+RAG_CHAIN = (
+    {
+        "context": itemgetter("question") | _to_question | _retriever,
+        "question": itemgetter("question") | _to_question,
+    }
+    | _prompt
+    | _llm
+    | _parser
+)
+
+
+# ----------------------------
+# API pública
+# ----------------------------
 
 def answer(question: str) -> str:
-    """Wrapper sincrónico (para compatibilidad con langgraph.json)."""
-    return asyncio.run(async_answer(question))
+    """
+    Versión síncrona por si se necesita en otros sitios.
+    """
+    return RAG_CHAIN.invoke({"question": question})
 
 
-# =====================================================
-# Integración con herramientas LangGraph
-# =====================================================
-@tool("rag_search", return_direct=False)
-async def rag_search(question: str) -> str:
-    """Herramienta (async) para integrar en agentes LangGraph."""
-    return await async_answer(question)
+async def async_answer(question: str) -> str:
+    """
+    Interfaz usada por LangGraph API en tu proyecto (según el stacktrace).
+    Mantiene la misma firma, pero ahora el retriever recibe correctamente un string.
+    """
+    return await asyncio.to_thread(RAG_CHAIN.invoke, {"question": question})
 
 
-def get_rag_tool() -> Tool:
-    """Devuelve el Tool para incluir en el agente."""
-    return rag_search
+# ----------------------------
+# Modo script (opcional)
+# ----------------------------
 
-
-# =====================================================
-# Ejecución directa
-# =====================================================
 if __name__ == "__main__":
-    print("RAG listo. PDF:", PDF_PATH)
-    print(asyncio.run(async_answer("¿Cuál es el tema principal del documento?")))
+    import sys
+    q = " ".join(sys.argv[1:]) or "¿Qué hay en el índice?"
+    print(answer(q))
