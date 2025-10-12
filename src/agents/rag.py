@@ -6,6 +6,7 @@ import asyncio
 from functools import lru_cache
 from pathlib import Path
 from typing import List
+from operator import itemgetter  # <-- IMPORTANTE: para rutear la pregunta al retriever
 
 from dotenv import load_dotenv
 
@@ -154,10 +155,11 @@ async def _make_chain():
     prompt = _prompt_template()
     llm = _make_llm()
 
+    # 🔧 CORRECCIÓN: el retriever debe recibir SOLO el texto de la pregunta
     chain = (
         {
-            "context": retriever | _format_docs,
-            "question": RunnablePassthrough(),
+            "context": itemgetter("question") | retriever | _format_docs,
+            "question": itemgetter("question"),
         }
         | prompt
         | llm
@@ -172,6 +174,7 @@ async def _make_chain():
 async def async_answer(question: str) -> str:
     """Responde de forma asíncrona; apto para servidores ASGI (LangGraph API)."""
     chain = await _make_chain()
+    # Puedes usar ainvoke si prefieres: return await chain.ainvoke({"question": question})
     return await asyncio.to_thread(chain.invoke, {"question": question})
 
 

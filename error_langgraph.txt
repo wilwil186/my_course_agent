@@ -15,51 +15,50 @@ For production use, please use LangGraph Platform.
 
 
 [version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)
-[2m2025-10-12T01:17:42.228890Z[0m [[32m[1minfo     [0m] [1m[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)[0m [[0m[1m[34mversion_check[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)'[0m [36mthread_name[0m=[35m'Thread-3 (_check_newer_version)'[0m
-[2m2025-10-12T01:17:42.633707Z[0m [[32m[1minfo     [0m] [1mUsing langgraph_runtime_inmem [0m [[0m[1m[34mlanggraph_runtime[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:42.638445Z[0m [[32m[1minfo     [0m] [1mUsing auth of type=noop       [0m [[0m[1m[34mlanggraph_api.auth.middleware[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:42.640341Z[0m [[32m[1minfo     [0m] [1mStarting In-Memory runtime with langgraph-api=0.4.35 and in-memory runtime=0.14.1[0m [[0m[1m[34mlanggraph_runtime_inmem.lifespan[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_runtime_inmem_version[0m=[35m0.14.1[0m [36mthread_name[0m=[35masyncio_0[0m [36mversion[0m=[35m0.4.35[0m
-[2m2025-10-12T01:17:42.655257Z[0m [[32m[1minfo     [0m] [1mStarting thread TTL sweeper with interval 5 minutes[0m [[0m[1m[34mlanggraph_api.thread_ttl[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36minterval_minutes[0m=[35m5[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mstrategy[0m=[35mdelete[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:42.700829Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:43.051642Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:43.402214Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:43.752872Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:44.103410Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:44.201580Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'agent'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35magent[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:44.219768Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'simple'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35msimple[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:44.280762Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'rag'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35mrag[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:44.285754Z[0m [[32m[1minfo     [0m] [1mStarting 1 background workers [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_0[0m
-[2m2025-10-12T01:17:44.286120Z[0m [[32m[1minfo     [0m] [1mWorker stats                  [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mactive[0m=[35m0[0m [36mapi_variant[0m=[35mlocal_dev[0m [36mavailable[0m=[35m1[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax[0m=[35m1[0m [36mthread_name[0m=[35masyncio_1[0m
-Server started in 2.44s
-[2m2025-10-12T01:17:44.337235Z[0m [[32m[1minfo     [0m] [1mServer started in 2.44s       [0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'Server started in 2.44s'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
+[2m2025-10-12T13:07:13.175430Z[0m [[32m[1minfo     [0m] [1m[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)[0m [[0m[1m[34mversion_check[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'[version] A newer version of langgraph-api is available: 0.4.35 → 0.4.39  (pip install -U langgraph-api)'[0m [36mthread_name[0m=[35m'Thread-3 (_check_newer_version)'[0m
+[2m2025-10-12T13:07:13.567146Z[0m [[32m[1minfo     [0m] [1mUsing langgraph_runtime_inmem [0m [[0m[1m[34mlanggraph_runtime[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:13.572161Z[0m [[32m[1minfo     [0m] [1mUsing auth of type=noop       [0m [[0m[1m[34mlanggraph_api.auth.middleware[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:13.574237Z[0m [[32m[1minfo     [0m] [1mStarting In-Memory runtime with langgraph-api=0.4.35 and in-memory runtime=0.14.1[0m [[0m[1m[34mlanggraph_runtime_inmem.lifespan[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_runtime_inmem_version[0m=[35m0.14.1[0m [36mthread_name[0m=[35masyncio_0[0m [36mversion[0m=[35m0.4.35[0m
+[2m2025-10-12T13:07:13.592267Z[0m [[32m[1minfo     [0m] [1mStarting thread TTL sweeper with interval 5 minutes[0m [[0m[1m[34mlanggraph_api.thread_ttl[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36minterval_minutes[0m=[35m5[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mstrategy[0m=[35mdelete[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:13.634552Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:13.985452Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:14.335977Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:14.686541Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:15.037268Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:15.196096Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'agent'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35magent[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:15.214591Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'simple'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35msimple[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:15.275102Z[0m [[32m[1minfo     [0m] [1mRegistering graph with id 'rag'[0m [[0m[1m[34mlanggraph_api.graph[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mgraph_id[0m=[35mrag[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:15.280426Z[0m [[32m[1minfo     [0m] [1mStarting 1 background workers [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T13:07:15.280793Z[0m [[32m[1minfo     [0m] [1mWorker stats                  [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mactive[0m=[35m0[0m [36mapi_variant[0m=[35mlocal_dev[0m [36mavailable[0m=[35m1[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax[0m=[35m1[0m [36mthread_name[0m=[35masyncio_1[0m
+Server started in 2.52s
+[2m2025-10-12T13:07:15.372031Z[0m [[32m[1minfo     [0m] [1mServer started in 2.52s       [0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'Server started in 2.52s'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
 🎨 Opening Studio in your browser...
-[2m2025-10-12T01:17:44.337699Z[0m [[32m[1minfo     [0m] [1m🎨 Opening Studio in your browser...[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'🎨 Opening Studio in your browser...'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
+[2m2025-10-12T13:07:15.372204Z[0m [[32m[1minfo     [0m] [1m🎨 Opening Studio in your browser...[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'🎨 Opening Studio in your browser...'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
 URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
-[2m2025-10-12T01:17:44.337971Z[0m [[32m[1minfo     [0m] [1mURL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
-[2m2025-10-12T01:17:44.453943Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:44.787393Z[0m [[32m[1minfo     [0m] [1mQueue stats                   [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax_age_secs[0m=[35mNone[0m [36mmed_age_secs[0m=[35mNone[0m [36mn_pending[0m=[35m0[0m [36mn_running[0m=[35m0[0m [36mthread_name[0m=[35masyncio_0[0m
-[2m2025-10-12T01:17:44.804547Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:45.155132Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:45.246774Z[0m [[32m[1minfo     [0m] [1mGetting auth instance: None   [0m [[0m[1m[34mlanggraph_api.auth.custom[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_auth[0m=[35mNone[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/assistants/search[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:45.508714Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:45.859427Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:46.209941Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:46.560579Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:46.721007Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:46.911179Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:47.261851Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:47.612808Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:47.963709Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:48.314595Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:48.665187Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.015784Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.366511Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.527929Z[0m [[32m[1minfo     [0m] [1mLoading faiss with AVX2 support.[0m [[0m[1m[34mfaiss.loader[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:49.542323Z[0m [[32m[1minfo     [0m] [1mSuccessfully loaded faiss with AVX2 support.[0m [[0m[1m[34mfaiss.loader[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
-[2m2025-10-12T01:17:49.597591Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 500 4298ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4298[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.600999Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/subgraphs 500 4239ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4239[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'recurse=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/subgraphs[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.601813Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 500 4239ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4239[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.602984Z[0m [[31m[1merror    [0m] [1mException in ASGI application
+[2m2025-10-12T13:07:15.372462Z[0m [[32m[1minfo     [0m] [1mURL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024[0m [[0m[1m[34mbrowser_opener[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmessage[0m=[35m'URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024'[0m [36mthread_name[0m=[35m'Thread-2 (_open_browser)'[0m
+[2m2025-10-12T13:07:15.388143Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:15.739054Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:15.782280Z[0m [[32m[1minfo     [0m] [1mQueue stats                   [0m [[0m[1m[34mlanggraph_runtime_inmem.queue[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmax_age_secs[0m=[35mNone[0m [36mmed_age_secs[0m=[35mNone[0m [36mn_pending[0m=[35m0[0m [36mn_running[0m=[35m0[0m [36mthread_name[0m=[35masyncio_0[0m
+[2m2025-10-12T13:07:16.089737Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:16.292588Z[0m [[32m[1minfo     [0m] [1mGetting auth instance: None   [0m [[0m[1m[34mlanggraph_api.auth.custom[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlanggraph_auth[0m=[35mNone[0m [36mmethod[0m=[35mPOST[0m [36mpath[0m=[35m/assistants/search[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:16.440375Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:16.791024Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:17.141614Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:17.492224Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:17.554343Z[0m [[32m[1minfo     [0m] [1mLoad pretrained SentenceTransformer: intfloat/multilingual-e5-small[0m [[0m[1m[34msentence_transformers.SentenceTransformer[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:17.843244Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:18.194375Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:18.545425Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:18.896603Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:19.247364Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:19.598259Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:19.949221Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:20.299805Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:20.650743Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:20.786526Z[0m [[32m[1minfo     [0m] [1mLoading faiss with AVX2 support.[0m [[0m[1m[34mfaiss.loader[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:20.798884Z[0m [[32m[1minfo     [0m] [1mSuccessfully loaded faiss with AVX2 support.[0m [[0m[1m[34mfaiss.loader[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mthread_name[0m=[35masyncio_1[0m
+[2m2025-10-12T13:07:20.828130Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 500 4422ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4422[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:20.831438Z[0m [[31m[1merror    [0m] [1mException in ASGI application
 [0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
   + Exception Group Traceback (most recent call last):
   |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
@@ -178,7 +177,7 @@ URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
     |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
     |     yield await value
     |           ^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
+    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 178, in async_answer
     |     return await asyncio.to_thread(chain.invoke, {"question": question})
     |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     |   File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
@@ -209,8 +208,8 @@ URL: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
     |         ^^^^^^^^^^^^^
     |     )
     |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    |     input_ = context.run(step.invoke, input_, config, **kwargs)
+    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3246, in invoke
+    |     input_ = context.run(step.invoke, input_, config)
     |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
     |     result = self._get_relevant_documents(
     |         input, run_manager=run_manager, **kwargs_
@@ -342,7 +341,7 @@ Traceback (most recent call last):
   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
     yield await value
           ^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
+  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 178, in async_answer
     return await asyncio.to_thread(chain.invoke, {"question": question})
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
@@ -373,8 +372,8 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^
     )
     ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    input_ = context.run(step.invoke, input_, config, **kwargs)
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3246, in invoke
+    input_ = context.run(step.invoke, input_, config)
   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
     result = self._get_relevant_documents(
         input, run_manager=run_manager, **kwargs_
@@ -397,346 +396,8 @@ Traceback (most recent call last):
     texts = [x.replace("\n", " ") for x in texts]
              ^^^^^^^^^
 AttributeError: 'dict' object has no attribute 'replace'
-[2m2025-10-12T01:17:49.612869Z[0m [[31m[1merror    [0m] [1mException in ASGI application
-[0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-  + Exception Group Traceback (most recent call last):
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
-  |     yield
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 183, in __call__
-  |     async with anyio.create_task_group() as task_group:
-  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
-  |     raise BaseExceptionGroup(
-  |         "unhandled errors in a TaskGroup", self._exceptions
-  |     ) from None
-  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
-  +-+---------------- 1 ----------------
-    | Traceback (most recent call last):
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    |     result = await app(  # type: ignore[func-returns-value]
-    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |         self.scope, self.receive, self.send
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     )
-    |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    |     return await self.app(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    |     await self.app(scope, receive, _send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    |     with recv_stream, send_stream, collapse_excgroups():
-    |                                    ~~~~~~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    |     self.gen.throw(value)
-    |     ~~~~~~~~~~~~~~^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    |     response = await self.dispatch_func(request, call_next)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    |     response = await call_next(request)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    |     raise app_exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    |     await self.app(scope, receive_or_disconnect, send_no_error)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    |     await self.simple_response(scope, receive, send, request_headers=headers)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    |     await self.app(scope, inner_receive, inner_send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    |     return await super().__call__(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    |     return await super().handle(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    |     response: ASGIApp = await func(request)
-    |                         ^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    |     return await func(*args, **kwargs)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 306, in get_assistant_subgraphs
-    |     async with get_graph(
-    |                ~~~~~~~~~^
-    |         assistant["graph_id"],
-    |         ^^^^^^^^^^^^^^^^^^^^^^
-    |     ...<2 lines>...
-    |         store=(await api_store.get_store()),
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     ) as graph:
-    |     ^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    |     async with _generate_graph(value) as graph_obj:
-    |                ~~~~~~~~~~~~~~~^^^^^^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    |     yield await value
-    |           ^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
-    |     return await asyncio.to_thread(chain.invoke, {"question": question})
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
-    |     return await loop.run_in_executor(None, func_call)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    |     result = self.fn(*self.args, **self.kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    |     input_ = context.run(step.invoke, input_, config, **kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 4001, in invoke
-    |     output = {key: future.result() for key, future in zip(steps, futures)}
-    |                    ~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 449, in result
-    |     return self.__get_result()
-    |            ~~~~~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
-    |     raise self._exception
-    |   File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    |     result = self.fn(*self.args, **self.kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3985, in _invoke_step
-    |     return context.run(
-    |            ~~~~~~~~~~~^
-    |         step.invoke,
-    |         ^^^^^^^^^^^^
-    |         input_,
-    |         ^^^^^^^
-    |         child_config,
-    |         ^^^^^^^^^^^^^
-    |     )
-    |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    |     input_ = context.run(step.invoke, input_, config, **kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
-    |     result = self._get_relevant_documents(
-    |         input, run_manager=run_manager, **kwargs_
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/vectorstores/base.py", line 1067, in _get_relevant_documents
-    |     docs = self.vectorstore.similarity_search(query, **kwargs_)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
-    |     docs_and_scores = self.similarity_search_with_score(
-    |         query, k, filter=filter, fetch_k=fetch_k, **kwargs
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
-    |     embedding = self._embed_query(query)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
-    |     return self.embedding_function.embed_query(text)
-    |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 173, in embed_query
-    |     return self._embed([text], embed_kwargs)[0]
-    |            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 125, in _embed
-    |     texts = [x.replace("\n", " ") for x in texts]
-    |              ^^^^^^^^^
-    | AttributeError: 'dict' object has no attribute 'replace'
-    +------------------------------------
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    result = await app(  # type: ignore[func-returns-value]
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        self.scope, self.receive, self.send
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    return await self.app(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    await self.app(scope, receive, _send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    with recv_stream, send_stream, collapse_excgroups():
-                                   ~~~~~~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    self.gen.throw(value)
-    ~~~~~~~~~~~~~~^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    response = await self.dispatch_func(request, call_next)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    response = await call_next(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    raise app_exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    await self.app(scope, receive_or_disconnect, send_no_error)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    await self.simple_response(scope, receive, send, request_headers=headers)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    await self.app(scope, inner_receive, inner_send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    return await super().__call__(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    return await super().handle(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    response: ASGIApp = await func(request)
-                        ^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    return await func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 306, in get_assistant_subgraphs
-    async with get_graph(
-               ~~~~~~~~~^
-        assistant["graph_id"],
-        ^^^^^^^^^^^^^^^^^^^^^^
-    ...<2 lines>...
-        store=(await api_store.get_store()),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ) as graph:
-    ^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    async with _generate_graph(value) as graph_obj:
-               ~~~~~~~~~~~~~~~^^^^^^^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    yield await value
-          ^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
-    return await asyncio.to_thread(chain.invoke, {"question": question})
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
-    return await loop.run_in_executor(None, func_call)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    input_ = context.run(step.invoke, input_, config, **kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 4001, in invoke
-    output = {key: future.result() for key, future in zip(steps, futures)}
-                   ~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 449, in result
-    return self.__get_result()
-           ~~~~~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3985, in _invoke_step
-    return context.run(
-           ~~~~~~~~~~~^
-        step.invoke,
-        ^^^^^^^^^^^^
-        input_,
-        ^^^^^^^
-        child_config,
-        ^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    input_ = context.run(step.invoke, input_, config, **kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
-    result = self._get_relevant_documents(
-        input, run_manager=run_manager, **kwargs_
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/vectorstores/base.py", line 1067, in _get_relevant_documents
-    docs = self.vectorstore.similarity_search(query, **kwargs_)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
-    docs_and_scores = self.similarity_search_with_score(
-        query, k, filter=filter, fetch_k=fetch_k, **kwargs
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
-    embedding = self._embed_query(query)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
-    return self.embedding_function.embed_query(text)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 173, in embed_query
-    return self._embed([text], embed_kwargs)[0]
-           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 125, in _embed
-    texts = [x.replace("\n", " ") for x in texts]
-             ^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'replace'
-[2m2025-10-12T01:17:49.620398Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/graph 500 4231ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m4231[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/graph[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m'xray=true'[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/graph[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:49.620992Z[0m [[31m[1merror    [0m] [1mException in ASGI application
+[2m2025-10-12T13:07:20.839939Z[0m [[31m[1merror    [0m] [1mGET /assistants/e55ae2ab-01af-5331-997f-113dcf644526/schemas 500 464ms[0m [[0m[1m[34mlanggraph_api.server[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mlatency_ms[0m=[35m464[0m [36mmethod[0m=[35mGET[0m [36mpath[0m=[35m/assistants/{assistant_id}/schemas[0m [36mpath_params[0m=[35m{'assistant_id': 'e55ae2ab-01af-5331-997f-113dcf644526'}[0m [36mproto[0m=[35m1.1[0m [36mquery_string[0m=[35m[0m [36mreq_header[0m=[35m{}[0m [36mres_header[0m=[35m{}[0m [36mroute[0m=[35m/assistants/{assistant_id}/schemas[0m [36mstatus[0m=[35m500[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:20.840686Z[0m [[31m[1merror    [0m] [1mException in ASGI application
 [0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
   + Exception Group Traceback (most recent call last):
   |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
@@ -855,7 +516,7 @@ AttributeError: 'dict' object has no attribute 'replace'
     |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
     |     yield await value
     |           ^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
+    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 178, in async_answer
     |     return await asyncio.to_thread(chain.invoke, {"question": question})
     |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     |   File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
@@ -868,7 +529,7 @@ AttributeError: 'dict' object has no attribute 'replace'
     |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 4001, in invoke
     |     output = {key: future.result() for key, future in zip(steps, futures)}
     |                    ~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 456, in result
+    |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 449, in result
     |     return self.__get_result()
     |            ~~~~~~~~~~~~~~~~~^^
     |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
@@ -886,8 +547,8 @@ AttributeError: 'dict' object has no attribute 'replace'
     |         ^^^^^^^^^^^^^
     |     )
     |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    |     input_ = context.run(step.invoke, input_, config, **kwargs)
+    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3246, in invoke
+    |     input_ = context.run(step.invoke, input_, config)
     |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
     |     result = self._get_relevant_documents(
     |         input, run_manager=run_manager, **kwargs_
@@ -1019,345 +680,7 @@ Traceback (most recent call last):
   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
     yield await value
           ^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
-    return await asyncio.to_thread(chain.invoke, {"question": question})
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
-    return await loop.run_in_executor(None, func_call)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    input_ = context.run(step.invoke, input_, config, **kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 4001, in invoke
-    output = {key: future.result() for key, future in zip(steps, futures)}
-                   ~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 456, in result
-    return self.__get_result()
-           ~~~~~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3985, in _invoke_step
-    return context.run(
-           ~~~~~~~~~~~^
-        step.invoke,
-        ^^^^^^^^^^^^
-        input_,
-        ^^^^^^^
-        child_config,
-        ^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    input_ = context.run(step.invoke, input_, config, **kwargs)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
-    result = self._get_relevant_documents(
-        input, run_manager=run_manager, **kwargs_
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/vectorstores/base.py", line 1067, in _get_relevant_documents
-    docs = self.vectorstore.similarity_search(query, **kwargs_)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
-    docs_and_scores = self.similarity_search_with_score(
-        query, k, filter=filter, fetch_k=fetch_k, **kwargs
-    )
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
-    embedding = self._embed_query(query)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
-    return self.embedding_function.embed_query(text)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 173, in embed_query
-    return self._embed([text], embed_kwargs)[0]
-           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 125, in _embed
-    texts = [x.replace("\n", " ") for x in texts]
-             ^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'replace'
-[2m2025-10-12T01:17:49.631064Z[0m [[31m[1merror    [0m] [1mException in ASGI application
-[0m [[0m[1m[34muvicorn.error[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-  + Exception Group Traceback (most recent call last):
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
-  |     yield
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 183, in __call__
-  |     async with anyio.create_task_group() as task_group:
-  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
-  |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
-  |     raise BaseExceptionGroup(
-  |         "unhandled errors in a TaskGroup", self._exceptions
-  |     ) from None
-  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
-  +-+---------------- 1 ----------------
-    | Traceback (most recent call last):
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    |     result = await app(  # type: ignore[func-returns-value]
-    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |         self.scope, self.receive, self.send
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     )
-    |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    |     return await self.app(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    |     await self.app(scope, receive, _send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    |     with recv_stream, send_stream, collapse_excgroups():
-    |                                    ~~~~~~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    |     self.gen.throw(value)
-    |     ~~~~~~~~~~~~~~^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    |     response = await self.dispatch_func(request, call_next)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    |     response = await call_next(request)
-    |                ^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    |     raise app_exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    |     await self.app(scope, receive_or_disconnect, send_no_error)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    |     await self.simple_response(scope, receive, send, request_headers=headers)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    |     await self.app(scope, inner_receive, inner_send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    |     return await super().__call__(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    |     await self.middleware_stack(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    |     await route.handle(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    |     return await super().handle(scope, receive, send)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    |     await self.app(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    |     raise exc
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    |     await app(scope, receive, sender)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    |     response: ASGIApp = await func(request)
-    |                         ^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    |     return await func(*args, **kwargs)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 250, in get_assistant_graph
-    |     async with get_graph(
-    |                ~~~~~~~~~^
-    |         assistant["graph_id"],
-    |         ^^^^^^^^^^^^^^^^^^^^^^
-    |     ...<2 lines>...
-    |         store=(await api_store.get_store()),
-    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |     ) as graph:
-    |     ^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    |     async with _generate_graph(value) as graph_obj:
-    |                ~~~~~~~~~~~~~~~^^^^^^^
-    |   File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    |     return await anext(self.gen)
-    |            ^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    |     yield await value
-    |           ^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
-    |     return await asyncio.to_thread(chain.invoke, {"question": question})
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
-    |     return await loop.run_in_executor(None, func_call)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    |     result = self.fn(*self.args, **self.kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    |     input_ = context.run(step.invoke, input_, config, **kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 4001, in invoke
-    |     output = {key: future.result() for key, future in zip(steps, futures)}
-    |                    ~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 449, in result
-    |     return self.__get_result()
-    |            ~~~~~~~~~~~~~~~~~^^
-    |   File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
-    |     raise self._exception
-    |   File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    |     result = self.fn(*self.args, **self.kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3985, in _invoke_step
-    |     return context.run(
-    |            ~~~~~~~~~~~^
-    |         step.invoke,
-    |         ^^^^^^^^^^^^
-    |         input_,
-    |         ^^^^^^^
-    |         child_config,
-    |         ^^^^^^^^^^^^^
-    |     )
-    |     ^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    |     input_ = context.run(step.invoke, input_, config, **kwargs)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
-    |     result = self._get_relevant_documents(
-    |         input, run_manager=run_manager, **kwargs_
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/vectorstores/base.py", line 1067, in _get_relevant_documents
-    |     docs = self.vectorstore.similarity_search(query, **kwargs_)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
-    |     docs_and_scores = self.similarity_search_with_score(
-    |         query, k, filter=filter, fetch_k=fetch_k, **kwargs
-    |     )
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
-    |     embedding = self._embed_query(query)
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
-    |     return self.embedding_function.embed_query(text)
-    |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 173, in embed_query
-    |     return self._embed([text], embed_kwargs)[0]
-    |            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_huggingface/embeddings/huggingface.py", line 125, in _embed
-    |     texts = [x.replace("\n", " ") for x in texts]
-    |              ^^^^^^^^^
-    | AttributeError: 'dict' object has no attribute 'replace'
-    +------------------------------------
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
-    result = await app(  # type: ignore[func-returns-value]
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        self.scope, self.receive, self.send
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
-    return await self.app(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/applications.py", line 113, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
-    await self.app(scope, receive, _send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 182, in __call__
-    with recv_stream, send_stream, collapse_excgroups():
-                                   ~~~~~~~~~~~~~~~~~~^^
-  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
-    self.gen.throw(value)
-    ~~~~~~~~~~~~~~^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 184, in __call__
-    response = await self.dispatch_func(request, call_next)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/private_network.py", line 50, in dispatch
-    response = await call_next(request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 159, in call_next
-    raise app_exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/base.py", line 144, in coro
-    await self.app(scope, receive_or_disconnect, send_no_error)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
-    await self.simple_response(scope, receive, send, request_headers=headers)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 80, in __call__
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/http_logger.py", line 74, in __call__
-    await self.app(scope, inner_receive, inner_send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/middleware/request_id.py", line 35, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
-    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 462, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/auth/middleware.py", line 49, in __call__
-    return await super().__call__(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/middleware/authentication.py", line 48, in __call__
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
-    await self.middleware_stack(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
-    await route.handle(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 144, in handle
-    return await super().handle(scope, receive, send)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
-    await self.app(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 50, in app
-    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
-    raise exc
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
-    await app(scope, receive, sender)
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/route.py", line 43, in app
-    response: ASGIApp = await func(request)
-                        ^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_runtime_inmem/retry.py", line 27, in wrapper
-    return await func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/api/assistants.py", line 250, in get_assistant_graph
-    async with get_graph(
-               ~~~~~~~~~^
-        assistant["graph_id"],
-        ^^^^^^^^^^^^^^^^^^^^^^
-    ...<2 lines>...
-        store=(await api_store.get_store()),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ) as graph:
-    ^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 173, in get_graph
-    async with _generate_graph(value) as graph_obj:
-               ~~~~~~~~~~~~~~~^^^^^^^
-  File "/usr/lib/python3.13/contextlib.py", line 214, in __aenter__
-    return await anext(self.gen)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langgraph_api/graph.py", line 106, in _generate_graph
-    yield await value
-          ^^^^^^^^^^^
-  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 175, in async_answer
+  File "/home/wilson/Documentos/my_course_agent/src/agents/rag.py", line 178, in async_answer
     return await asyncio.to_thread(chain.invoke, {"question": question})
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.13/asyncio/threads.py", line 25, in to_thread
@@ -1388,8 +711,8 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^
     )
     ^
-  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3244, in invoke
-    input_ = context.run(step.invoke, input_, config, **kwargs)
+  File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3246, in invoke
+    input_ = context.run(step.invoke, input_, config)
   File "/home/wilson/Documentos/my_course_agent/.venv/lib/python3.13/site-packages/langchain_core/retrievers.py", line 263, in invoke
     result = self._get_relevant_documents(
         input, run_manager=run_manager, **kwargs_
@@ -1412,5 +735,5 @@ Traceback (most recent call last):
     texts = [x.replace("\n", " ") for x in texts]
              ^^^^^^^^^
 AttributeError: 'dict' object has no attribute 'replace'
-[2m2025-10-12T01:17:49.717489Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
-[2m2025-10-12T01:17:50.068468Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:21.002106Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
+[2m2025-10-12T13:07:21.353296Z[0m [[32m[1minfo     [0m] [1m1 change detected             [0m [[0m[1m[34mwatchfiles.main[0m][0m [36mapi_variant[0m=[35mlocal_dev[0m [36mlanggraph_api_version[0m=[35m0.4.35[0m [36mthread_name[0m=[35mMainThread[0m
