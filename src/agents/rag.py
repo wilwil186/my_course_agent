@@ -202,8 +202,24 @@ _chain_cache = None
 # -----------------------------------------------------------------------------
 def retrieve_context(state: State) -> dict:
     """Nodo para recuperar contexto basado en la pregunta"""
+    global _retriever_cache
+    
+    # Inicializar retriever si no está cargado
+    if _retriever_cache is None:
+        import asyncio
+        try:
+            _retriever_cache = asyncio.run(_load_retriever_if_available())
+        except RuntimeError:
+            # Si ya hay un event loop corriendo, usar to_thread
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                embeddings = _load_embeddings_sync()
+                _retriever_cache = _load_retriever_sync(embeddings)
+            else:
+                _retriever_cache = asyncio.run(_load_retriever_if_available())
+    
     question = state.get("question", "")
-    retriever = _retriever_cache  # Usar la cache global
+    retriever = _retriever_cache
     
     context = _retrieve_context(question, retriever)
     

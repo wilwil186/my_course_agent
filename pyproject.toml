@@ -1,0 +1,21 @@
+[project]
+name = "my-course-agent"
+version = "0.1.0"
+description = "Agentes de IA con LangGraph y RAG"
+requires-python = ">=3.11"
+dependencies = [
+    "langgraph>=0.2",
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-ollama>=0.3",
+    "langchain-huggingface",
+    "python-dotenv>=1.0",
+    "pydantic<3",
+]
+
+[dependency-groups]
+dev = [
+    "langgraph-cli[inmem]",
+    "jupyter",
+    "ipykernel",
+]
