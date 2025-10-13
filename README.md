@@ -1,306 +1,78 @@
-# 🚀 Configuración del Proyecto con `uv` + LangGraph (arquitectura `src/`)
+# 🤖 Curso de Agentes con LangGraph y RAG
 
-> Guía completa para levantar el entorno, instalar dependencias, compilar/instalar el proyecto y ejecutar tu agente.
+¡Bienvenido! Este repositorio es una guía práctica y paso a paso para aprender a construir agentes inteligentes usando **LangGraph** y **RAG (Retrieval-Augmented Generation)**. Está diseñado especialmente para principiantes, con explicaciones simples, ejemplos prácticos y notebooks interactivos.
 
----
+## 🎯 ¿Qué aprenderás?
+- Construir agentes que piensan y actúan como humanos.
+- Usar modelos de lenguaje (como Ollama) para generar respuestas inteligentes.
+- Implementar RAG para que tus agentes "recuerden" información de documentos.
+- Crear flujos de trabajo con grafos (como diagramas de flujo para código).
 
-## 🧩 Requisitos previos
+No necesitas ser un experto en programación; empezaremos desde lo básico.
 
-- Python ≥ **3.11** (recomendado 3.13)  
-- [Ollama](https://ollama.ai) corriendo localmente  
-- [`uv`](https://docs.astral.sh/uv/getting-started/installation/) instalado  
-
----
-
-## ⚙️ Instalar `uv` (una vez)
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-uv --version
-````
-
----
-
-## 🧹 Limpiar entornos previos (pip/venv)
-
-```bash
-deactivate 2>/dev/null || true
-rm -rf .venv
-```
-
----
-
-## 🏗️ Crear el entorno con `uv`
-
-```bash
-uv venv
-# (opcional) fijar versión exacta de Python
-# uv python pin 3.13
-```
-
----
-
-## 📦 Dependencias (producción)
-
-```bash
-uv add \
-  "langgraph>=0.2.33" \
-  "langgraph-api>=0.4.35" \
-  "langchain>=0.3" \
-  "langchain-core>=0.3" \
-  "langchain-ollama>=0.1.0" \
-  "pydantic<3" \
-  "python-dotenv>=1.0"
-```
-
----
-
-## 🧰 Dependencias de desarrollo
-
-```bash
-uv add "langgraph-cli[inmem]" jupyter --dev
-```
-
-> Mantén separadas las dependencias de **producción** y **desarrollo** en tu `pyproject.toml`.
-
----
-
-## 🔄 Sincronizar e instalar el proyecto (editable)
-
-> Como usamos arquitectura `src/`, es importante **instalar el proyecto localmente** para que Python reconozca los paquetes (`agents`, `api`, etc.)
-
-```bash
-# sincroniza dependencias
-uv sync
-
-# instala el paquete local en modo editable
-uv pip install -e .
-```
-
----
-
-## 🧠 Ejecutar el agente
-
-```bash
-# si el entrypoint está en src/agents/main.py (variable exportada: app)
-uv run python -c "from agents.main import ask; print(ask('¿Cuál es el clima en Bogotá?'))"
-```
-
-### Interfaz visual (LangGraph Studio)
-
-```bash
-# requiere langgraph-cli (instalado arriba)
-uv run langgraph dev
-# o de forma temporal:
-# uvx langgraph dev
-```
-
----
-
-## 🧪 Verificar el entorno
-
-```bash
-uv pip list
-ollama run qwen2.5:7b-instruct
-```
-
----
-
-## 📂 Estructura recomendada del proyecto
+## 📁 Estructura del Proyecto
+Aquí tienes una visión general de cómo está organizado el repositorio para que sea fácil de seguir:
 
 ```
-.
-├── src/
-│   ├── agents/
-│   │   ├── __init__.py
-│   │   └── main.py         # exporta 'app' (grafo principal)
-│   └── api/
-│       ├── __init__.py
-│       └── server.py       # API para exponer el agente
-│
-├── notebooks/
-│   └── grafo_visual.ipynb
-│
-├── .env
-├── .gitignore
-├── langgraph.json
-├── pyproject.toml
-├── README.md
-└── uv.lock
+my_course_agent/
+├── src/                          # Código fuente del proyecto
+│   ├── agents/                   # Agentes principales (ej: main.py, rag.py)
+│   └── api/                      # APIs para conectar el agente
+├── notes/                        # Notas y lecciones en español
+│   ├── 01_notas.md              # Introducción básica
+│   ├── 02_notas.md              # ...
+│   └── ...                       # Más lecciones paso a paso
+├── notebooks/                    # Notebooks interactivos de Jupyter
+│   ├── 01_noootbook.ipynb       # Ejemplos simples
+│   ├── 02_simple.ipynb          # ...
+│   └── ...                       # Experimentos con código
+├── data/                         # Archivos de datos (ej: PDFs para RAG)
+│   └── 9587014499.PDF           # Documento de ejemplo
+├── scripts/                      # Scripts útiles
+│   └── build_index.py           # Para construir índices de búsqueda
+├── .gitignore                   # Archivos a ignorar en Git
+├── README.md                    # Este archivo (¡estás aquí!)
+└── uv.lock                      # Gestión de dependencias con `uv`
 ```
 
----
+### Consejos para Navegar:
+- **Empieza por `notes/`:** Lee las notas en orden (01, 02, etc.) para entender los conceptos.
+- **Prueba en `notebooks/`:** Abre los notebooks en Jupyter para ejecutar código y ver resultados.
+- **Explora `src/`:** Mira el código fuente cuando estés listo para detalles técnicos.
+- **Usa `data/`:** Para ejemplos con documentos reales.
 
-## 🧩 Configuración de LangGraph Studio
+## 🚀 Inicio Rápido
+Sigue estos pasos simples para configurar y empezar a experimentar:
 
-**Archivo `langgraph.json`:**
+1. **Instala Python (si no lo tienes):**
+   - Descarga Python 3.11+ desde [python.org](https://www.python.org/downloads/).
+   - Asegúrate de marcar "Add to PATH" durante la instalación.
 
-```json
-{
-  "dependencies": ["."],
-  "graphs": {
-    "agent": "./src/agents/main.py:app"
-  },
-  "env": ".env"
-}
-```
+2. **Instala Ollama (para modelos de IA local):**
+   - Ve a [ollama.ai](https://ollama.ai) y descarga la versión para tu sistema.
+   - Ejecuta: `ollama run llama3.2` (o el modelo que prefieras) para probar.
 
-> El campo `"agent"` apunta al grafo compilado `app` dentro de `src/agents/main.py`.
+3. **Instala dependencias:**
+   - Abre una terminal en la carpeta del proyecto.
+   - Ejecuta: `pip install uv` (o sigue la guía en las notas para más detalles).
+   - Luego: `uv sync` para instalar todo lo necesario.
 
----
+4. **Ejecuta un ejemplo simple:**
+   - Abre un notebook en `notebooks/` (ej: `01_simple.ipynb`).
+   - Sigue las instrucciones para hacer preguntas a tu agente.
 
-## 🧩 Variables de entorno
+## 🛠️ Herramientas Recomendadas
+- **Jupyter Notebook:** Para ejecutar código interactivo (instálalo con `pip install jupyter`).
+- **VS Code:** Editor gratuito con soporte para Python y notebooks.
+- **Git:** Para versionar tu código (ya tienes un repo iniciado).
 
-Crea un archivo `.env` en la raíz del proyecto:
+## 📚 Recursos Adicionales
+- [Documentación de LangGraph](https://langgraph-ai.github.io/langgraph/): Para detalles avanzados.
+- [Ollama Docs](https://github.com/ollama/ollama): Modelos locales fáciles.
+- [Comunidad en Discord](https://discord.gg/langchain): Preguntas y ayuda.
 
-```env
-MODEL=qwen2.5:7b-instruct
-OLLAMA_BASE_URL=http://localhost:11434
-# LANGSMITH_API_KEY=...
-# LANGCHAIN_TRACING_V2=false
-```
+## 🤝 Contribuciones
+¡Este es un proyecto de aprendizaje! Si encuentras errores o mejoras, edita archivos y haz un commit. Recuerda: todos empezamos como principiantes.
 
-Y cárgalas en el código con:
-
-```python
-from dotenv import load_dotenv
-load_dotenv()
-```
-
----
-
-## ✅ Resumen de comandos clave
-
-| Acción                         | Comando                    |
-| ------------------------------ | -------------------------- |
-| Crear entorno                  | `uv venv`                  |
-| Añadir librería                | `uv add paquete`           |
-| Añadir librerías de desarrollo | `uv add paquete --dev`     |
-| Sincronizar entorno            | `uv sync`                  |
-| **Instalar proyecto local**    | `uv pip install -e .`      |
-| Ejecutar script                | `uv run python archivo.py` |
-| Abrir LangGraph Studio         | `uv run langgraph dev`     |
-
----
-
-## 🧰 `.gitignore` recomendado
-
-```gitignore
-# Python / uv
-.venv/
-.uv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.egg-info/
-.eggs/
-.build/
-dist/
-.cache/
-uv.lock.lock
-
-# Config local / credenciales
-.env
-.env.*
-*.env
-*.secret
-*.secrets
-
-# IDEs / editores
-.vscode/
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-.idea/
-*.iml
-
-# Notebooks
-.ipynb_checkpoints/
-*.ipynb_convert/
-*.nbconvert/
-
-# Logs
-*.log
-logs/
-**/wandb/
-**/mlruns/
-
-# Datos / artefactos
-data/
-data_raw/
-data_tmp/
-data_cache/
-outputs/
-artifacts/
-models/
-checkpoints/
-runs/
-
-# SO
-.DS_Store
-Thumbs.db
-```
-
----
-
-## 🔍 Visualización de grafos
-
-* En Jupyter o VSCode Notebook:
-
-  ````python
-  from agents.main import app
-  mermaid = app.get_graph().draw_mermaid()
-
-  from IPython.display import Markdown, display
-  display(Markdown(f"```mermaid\n{mermaid}\n```"))
-  ````
-
-* Si tu entorno no soporta Mermaid:
-
-  * [https://mermaidviewer.com/editor](https://mermaidviewer.com/editor)
-  * [https://mermaid.live](https://mermaid.live)
-
----
-
-## 🧵 Orquestación y depuración
-
-LangGraph Studio permite abrir múltiples **threads** y visualizar cómo el grafo recorre los nodos (`ensure_input`, `agent`, `tools`, `END`), lo que facilita depurar conversaciones en paralelo.
-
----
-
-## 🛠️ Troubleshooting
-
-* **Error:** `Package 'langgraph' does not provide any executables`
-  → Instala el CLI:
-
-  ```bash
-  uv add "langgraph-cli[inmem]" --dev
-  ```
-
-* **Error:** `ImportError: cannot import name 'agent' from 'main'`
-  → En esta estructura, el grafo exportado se llama `app`.
-  Usa:
-
-  ```python
-  from agents.main import app
-  ```
-
-* **Studio falla sin input**
-  → Usa el nodo `ensure_input` que inyecta un mensaje “Hola” cuando LangGraph Studio llama sin mensajes previos.
-
----
-
-## 📈 Próximos pasos
-
-1. Exponer el grafo `app` con **FastAPI** en `src/api/server.py`.
-2. Integrar métricas con **LangSmith** o **Prometheus**.
-3. Crear notebooks de prueba e integración.
-4. Desplegar la API en **Railway**, **Render** o **Fly.io**.
-
----
-
-> 💡 Con esta guía tienes un entorno reproducible, modular y compatible con `LangGraph Studio`, gestionado con `uv`, y listo para escalar tu agente a producción.
+¡Diviértete construyendo agentes inteligentes! Si tienes dudas, revisa las notas o abre un issue en GitHub.
 

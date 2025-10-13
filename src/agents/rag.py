@@ -1,12 +1,14 @@
 # src/agents/rag.py
 import os
 import asyncio
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Sequence, TypedDict
+from typing_extensions import Annotated
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.documents import Document
 from langchain_core.runnables import RunnableLambda
+from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -16,6 +18,17 @@ try:
     from langchain_ollama import ChatOllama  # paquete nuevo
 except Exception:
     from langchain_community.chat_models import ChatOllama  # fallback
+
+from langgraph.graph import START, END, StateGraph
+from langgraph.graph.message import add_messages
+
+# -----------------------------------------------------------------------------
+# Estado tipado para el grafo RAG
+# -----------------------------------------------------------------------------
+class State(TypedDict):
+    messages: Annotated[Sequence[BaseMessage], add_messages]
+    question: str
+    context: str
 
 # -------------------------
 # Config
@@ -183,6 +196,52 @@ async def _build_chain():
 
 # Cache para la cadena
 _chain_cache = None
+
+# -----------------------------------------------------------------------------
+# Nodos para el grafo RAG
+# -----------------------------------------------------------------------------
+def retrieve_context(state: State) -> dict:
+    """Nodo para recuperar contexto basado en la pregunta"""
+    question = state.get("question", "")
+    retriever = _retriever_cache  # Usar la cache global
+    
+    context = _retrieve_context(question, retriever)
+    
+    return {"context": context}
+
+def generate_response(state: State) -> dict:
+    """Nodo para generar la respuesta usando el LLM"""
+    question = state.get("question", "")
+    context = state.get("context", "")
+    
+    # Construir el prompt con contexto
+    if context:
+        full_prompt = f"Contexto:\n{context}\n\nPregunta: {question}"
+    else:
+        full_prompt = f"Pregunta: {question}"
+    
+    # Crear mensajes para el LLM
+    messages = [HumanMessage(content=full_prompt)]
+    
+    # Obtener respuesta del LLM
+    llm = _get_llm()
+    ai_response = llm.invoke(messages)
+    
+    return {"messages": [ai_response]}
+
+# -----------------------------------------------------------------------------
+# Construir el grafo RAG
+# -----------------------------------------------------------------------------
+builder = StateGraph(State)
+builder.add_node("retrieve", retrieve_context)
+builder.add_node("generate", generate_response)
+
+builder.add_edge(START, "retrieve")
+builder.add_edge("retrieve", "generate")
+builder.add_edge("generate", END)
+
+# Compilar el grafo
+app = builder.compile()
 
 # -------------------------
 # Punto de entrada (usado por langgraph.json)
