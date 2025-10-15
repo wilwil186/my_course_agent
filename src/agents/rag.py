@@ -198,35 +198,44 @@ async def _build_chain():
 _chain_cache = None
 
 # -----------------------------------------------------------------------------
-# Nodos para el grafo RAG
+# Nodos para el grafo RAG (más chaining: preparar, recuperar, generar, formatear)
 # -----------------------------------------------------------------------------
-def retrieve_context(state: State) -> dict:
-    """Nodo para recuperar contexto basado en la pregunta"""
+def prepare_question(state: State) -> dict:
+    """Nodo inicial: prepara la pregunta desde mensajes o input"""
+    question = state.get("question", "")
+    if not question and state.get("messages"):
+        # Extraer de último HumanMessage si no hay question directa
+        for msg in reversed(state["messages"]):
+            if isinstance(msg, HumanMessage):
+                question = msg.content
+                break
+    return {"question": question}
+
+def load_retriever(state: State) -> dict:
+    """Nodo: carga el retriever si no está en cache"""
     global _retriever_cache
-    
-    # Inicializar retriever si no está cargado
     if _retriever_cache is None:
         import asyncio
         try:
             _retriever_cache = asyncio.run(_load_retriever_if_available())
         except RuntimeError:
-            # Si ya hay un event loop corriendo, usar to_thread
             loop = asyncio.get_event_loop()
             if loop.is_running():
                 embeddings = _load_embeddings_sync()
                 _retriever_cache = _load_retriever_sync(embeddings)
             else:
                 _retriever_cache = asyncio.run(_load_retriever_if_available())
-    
+    return {}  # No cambia estado, solo inicializa
+
+def retrieve_context(state: State) -> dict:
+    """Nodo: recupera contexto basado en la pregunta"""
     question = state.get("question", "")
     retriever = _retriever_cache
-    
     context = _retrieve_context(question, retriever)
-    
     return {"context": context}
 
 def generate_response(state: State) -> dict:
-    """Nodo para generar la respuesta usando el LLM"""
+    """Nodo: genera la respuesta usando el LLM"""
     question = state.get("question", "")
     context = state.get("context", "")
     
@@ -245,16 +254,37 @@ def generate_response(state: State) -> dict:
     
     return {"messages": [ai_response]}
 
+def format_response(state: State) -> dict:
+    """Nodo final: formatea la respuesta para salida limpia"""
+    messages = state.get("messages", [])
+    if messages:
+        last_msg = messages[-1]
+        if isinstance(last_msg, AIMessage):
+            # Agregar metadata o limpieza si es necesario
+            content = last_msg.content
+            if isinstance(content, str):
+                formatted = content.strip()
+            else:
+                formatted = str(content)  # Fallback si no es str
+            return {"messages": [AIMessage(content=formatted)]}
+    return {}
+
 # -----------------------------------------------------------------------------
-# Construir el grafo RAG
+# Construir el grafo RAG (con más chaining: preparar -> cargar -> recuperar -> generar -> formatear)
 # -----------------------------------------------------------------------------
 builder = StateGraph(State)
+builder.add_node("prepare", prepare_question)
+builder.add_node("load", load_retriever)
 builder.add_node("retrieve", retrieve_context)
 builder.add_node("generate", generate_response)
+builder.add_node("format", format_response)
 
-builder.add_edge(START, "retrieve")
+builder.add_edge(START, "prepare")
+builder.add_edge("prepare", "load")
+builder.add_edge("load", "retrieve")
 builder.add_edge("retrieve", "generate")
-builder.add_edge("generate", END)
+builder.add_edge("generate", "format")
+builder.add_edge("format", END)
 
 # Compilar el grafo
 app = builder.compile()
