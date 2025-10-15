@@ -1,120 +1,159 @@
-# Clase 8 — RAG con OpenAI *File Search* (PDFs)
+# Clase 8 — RAG con Herramientas Open Source (PDFs y Documentos)
 
-**Objetivo:** Implementar un RAG sencillo para consultar **PDFs** con la *tool* **file search** de OpenAI, sin montar tu propia base vectorial.
+**Objetivo:** Implementar un sistema RAG (Retrieval-Augmented Generation) completamente open source para consultar documentos como PDFs, usando herramientas locales como LangChain, FAISS y Ollama, sin depender de APIs propietarias. Esto permite control total, privacidad y cero costos variables.
 
 ---
 
 ## 🧠 ¿Qué problema resuelve?
-Los LLMs estándar tienen limitaciones inherentes que RAG ayuda a superar.
+Los LLMs estándar tienen limitaciones inherentes que RAG ayuda a superar, pero usando herramientas open source mantenemos todo local y gratuito.
 
-- **Los LLM tienen una ventana de conocimiento limitada**: Están entrenados hasta una fecha fija (ej. GPT-4 hasta 2023) y no acceden a datos privados o recientes. No "saben" sobre eventos actuales, documentos internos o conocimiento personalizado.
-- **Con RAG (Retrieval-Augmented Generation) puedes adjuntar documentos (p. ej., PDFs)** y hacer que el modelo **razone con ese contexto** para responder con más precisión, relevancia y actualización.
-- **Beneficio clave**: Combina el poder generativo del LLM con información externa, evitando "alucinaciones" (respuestas inventadas) y mejorando exactitud en tareas como soporte técnico, análisis de docs o preguntas sobre datos privados.
+- **Los LLM tienen una ventana de conocimiento limitada**: Están entrenados hasta una fecha fija y no acceden a datos privados o recientes. No "saben" sobre eventos actuales, documentos internos o conocimiento personalizado.
+- **Con RAG open source puedes adjuntar documentos (p. ej., PDFs)** y hacer que el modelo **razone con ese contexto** para responder con más precisión, relevancia y actualización, todo en tu máquina.
+- **Beneficio clave**: Combina el poder generativo del LLM con información externa, evitando "alucinaciones" (respuestas inventadas) y mejorando exactitud en tareas como soporte técnico, análisis de docs o preguntas sobre datos privados. Además, es 100% privado y escalable sin costos.
 
-RAG transforma un LLM genérico en un experto en tu dominio específico.
+RAG transforma un LLM genérico en un experto en tu dominio específico, usando solo software open source.
 
 ---
 
 ## 🔑 Ideas clave
-Conceptos fundamentales para entender y usar RAG efectivamente.
+Conceptos fundamentales para entender y usar RAG efectivamente con herramientas open source.
 
-- **Vector stores**: Almacenes de embeddings (representaciones vectoriales de texto) que permiten búsquedas semánticas rápidas. OpenAI proporciona uno gestionado, pero puedes usar open-source como FAISS o Chroma para control total.
-- **file search**: Herramienta específica de OpenAI que integra búsquedas en vector stores con el LLM. Cuando el usuario pregunta, el modelo "busca" en tus documentos y usa resultados como contexto para responder.
+- **Vector stores locales**: Almacenes de embeddings (representaciones vectoriales de texto) que permiten búsquedas semánticas rápidas. Usa FAISS (de Facebook) o Chroma para control total, corriendo en tu máquina.
+- **Embeddings locales**: Calcula embeddings con modelos open source como `sentence-transformers` o Hugging Face, sin enviar datos a servidores externos.
 - **Estrategia de contexto**: Para evitar costos altos y confusiones, envía **solo el último mensaje** del usuario al LLM junto con resultados de búsqueda. Si necesitas memoria conversacional, resume historial o usa un sistema separado.
-- **Flujo típico**: Usuario pregunta → Buscar en vector store → Inyectar resultados relevantes en prompt → LLM responde con contexto.
+- **Flujo típico**: Usuario pregunta → Cargar documentos → Calcular embeddings → Buscar en vector store → Inyectar resultados relevantes en prompt → LLM responde con contexto.
 
-Esta aproximación es rápida para prototipos, pero para producción avanzada considera RAG propio con embeddings locales.
+Esta aproximación es ideal para privacidad y control; escala fácilmente sin límites de proveedores.
 
 ---
 
 ## ✅ Requisitos
-Antes de empezar, asegúrate de tener estos elementos listos.
+Antes de empezar, asegúrate de tener estos elementos listos (todo open source y gratuito).
 
-- **Cuenta y API Key de OpenAI**: Necesaria para usar file search. Crea cuenta en platform.openai.com si no tienes, y genera una API key en el dashboard (guárdala en `.env` como `OPENAI_API_KEY`).
-- **Proyecto creado en la plataforma de OpenAI**: Ve a platform.openai.com, crea un proyecto nuevo (gratuito para empezar) y copia el Project ID si lo necesitas (aunque para file search básico no es esencial).
-- **PDFs listos para subir**: Prepara documentos relevantes (ej. manuales, FAQs, reportes). Asegúrate de que sean texto legible (no imágenes escaneadas) y de tamaño razonable (<100MB por archivo para límites iniciales).
+- **Ollama corriendo localmente**: Para el LLM (ej. `qwen2.5:7b-instruct`). Descárgalo de ollama.ai e inicia con `ollama serve`.
+- **PDFs listos para procesar**: Prepara documentos relevantes (ej. manuales, FAQs, reportes). Asegúrate de que sean texto legible (no imágenes escaneadas) y de tamaño razonable.
+- **Dependencias open source**: Instala con `uv add langchain langchain-community langchain-ollama faiss-cpu sentence-transformers pypdf` (para PDFs).
 
-Una vez listo, puedes subir PDFs directamente desde el código o el dashboard.
+Una vez listo, procesa documentos localmente sin subir nada a servidores externos.
 
 ---
 
-## ⚙️ Preparación (Vector Store)
-Configura el vector store en OpenAI para almacenar y buscar en tus documentos.
+## ⚙️ Preparación (Vector Store Local)
+Configura un vector store local con FAISS para almacenar y buscar en tus documentos de manera privada.
 
-1. **Accede al dashboard**: Ve a platform.openai.com → Storage → Vector stores (o busca "Vector stores" en la barra lateral).
-2. **Crea un vector store nuevo**: Haz clic en "Create vector store", nómbralo (ej. `my-docs` para documentos del curso) y selecciona configuración básica (OpenAI maneja embeddings automáticamente).
-3. **Sube tus PDFs**: En el vector store creado, usa "Upload files" para subir documentos. OpenAI procesa y crea embeddings (puede tomar minutos para archivos grandes).
-4. **Copia el `vector_store_id`**: Una vez subido, ve a los detalles del vector store y copia el ID (formato: `vs_xxxxxxxx`). Lo necesitarás en el código para conectar.
+1. **Instala dependencias**:
+   ```bash
+   uv add langchain-community faiss-cpu sentence-transformers pypdf
+   ```
+   - `langchain-community`: Para loaders de documentos.
+   - `faiss-cpu`: Vector store open source (usa CPU; para GPU instala `faiss-gpu`).
+   - `sentence-transformers`: Modelos de embeddings gratuitos (ej. `all-MiniLM-L6-v2`).
+   - `pypdf`: Para cargar PDFs.
+
+2. **Carga y procesa documentos**:
+   ```python
+   from langchain_community.document_loaders import PyPDFLoader, TextLoader, DirectoryLoader
+   from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+   # Carga PDFs de un directorio (ajusta path)
+   loader = DirectoryLoader("PDF", glob="**/*.pdf", loader_cls=PyPDFLoader)
+   docs = loader.load()
+
+   # Divide en chunks (trozos) para mejor búsqueda
+   splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+   chunks = splitter.split_documents(docs)
+   print(f"Cargados {len(chunks)} chunks de documentos.")
+   ```
+
+3. **Calcula embeddings y crea vector store**:
+   ```python
+   from langchain_community.vectorstores import FAISS
+   from langchain_huggingface import HuggingFaceEmbeddings
+
+   # Modelo de embeddings open source (descarga automáticamente)
+   embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+   # Crea vector store local
+   vectorstore = FAISS.from_documents(chunks, embeddings)
+   vectorstore.save_local("faiss_index")  # Guarda en disco para reutilizar
+   print("Vector store creado y guardado localmente.")
+   ```
 
 - **Consejo**: Empieza con pocos PDFs para pruebas; agrega más después.
-- **Límites**: Revisa quotas en tu plan (ej. almacenamiento gratis limitado).
-- **Alternativa open-source**: Si prefieres control total, usa librerías como LangChain + FAISS para vector stores locales (tema para clases futuras).
+- **Ventajas open source**: Todo corre en tu máquina; no hay límites de almacenamiento ni costos.
+- **Carga desde guardado**: Para reutilizar: `vectorstore = FAISS.load_local("faiss_index", embeddings)`.
 
 ---
 
-## 🧩 Invocación con *file search*
-Integra file search en tu LLM para búsquedas automáticas en documentos.
+## 🧩 Invocación con RAG Local
+Integra el vector store en tu LLM local para búsquedas automáticas en documentos.
 
-### Definir la tool
+### Crear un retriever
 ```python
-# IDs de tus vector stores (copia de dashboard)
-vector_store_ids = ["vs_XXXXXXXX"]  # Reemplaza con tu ID real
+# Carga vector store (asumiendo ya creado)
+retriever = vectorstore.as_retriever(search_kwargs={"k": 5})  # Top 5 chunks relevantes
 
-# Definir tools para el LLM
-tools = [
-    {
-        "type": "file_search",
-        "vector_store_ids": vector_store_ids
-    }
-]
-
-# Instancia LLM de OpenAI con tools
-from langchain_openai import ChatOpenAI
-llm = ChatOpenAI(
-    model="gpt-4o-mini",  # O el modelo que uses
-    tools=tools
-)
+# Función para buscar contexto
+def get_context(query: str) -> str:
+    results = retriever.get_relevant_documents(query)
+    return "\n".join([doc.page_content for doc in results])
 ```
 
-### Invocar con contexto
+### Invocar LLM con contexto
 ```python
-# Ejemplo de uso (sin grafo, directo)
-from langchain_core.messages import HumanMessage
+from langchain_ollama import ChatOllama
+from langchain_core.messages import HumanMessage, SystemMessage
 
-# Envía solo el último mensaje (para simplicidad)
-user_input = "Explica el concepto de RAG en base a los documentos subidos."
-response = llm.invoke([HumanMessage(content=user_input)])
-print(response.content)  # Respuesta con contexto de PDFs
+# LLM local
+llm = ChatOllama(model="qwen2.5:7b-instruct", temperature=0.3)
+
+# Ejemplo de uso (sin grafo, directo)
+user_input = "Explica el concepto de RAG en base a los documentos cargados."
+context = get_context(user_input)
+prompt = f"Contexto: {context}\nPregunta: {user_input}"
+response = llm.invoke([HumanMessage(content=prompt)])
+print(response.content)  # Respuesta con contexto de PDFs locales
 ```
 
 - **Comportamiento esperado**:
-  - Si la pregunta requiere contexto de PDF (ej. "Qué dice el doc sobre X?") → El modelo llama a la tool automáticamente, busca en vector store y usa resultados en respuesta.
-  - Si es trivial (ej. "Hola") → Responde directo sin tool, ahorrando costos.
-- **Por qué solo último mensaje**: Evita tokens excesivos; si necesitas historial, resume previamente.
+  - Si la pregunta requiere contexto de PDF (ej. "Qué dice el doc sobre X?") → Busca en vector store local y usa resultados en respuesta.
+  - Si es trivial (ej. "Hola") → Responde directo sin búsqueda, ahorrando recursos.
+- **Por qué solo último mensaje**: Evita procesamiento excesivo; si necesitas historial, resume previamente.
 
-Esta integración es automática: el LLM decide cuándo usar la tool basado en la consulta.
+Esta integración es privada y rápida: todo en tu máquina.
 
 ---
 
 ## 🛠️ Integración rápida en tu repo
-Añade RAG a tu proyecto existente con pocos cambios.
+Añade RAG a tu proyecto existente con pocos cambios, usando herramientas open source.
 
 1. **Crea archivo `src/agents/rag.py`** (basado en tu `main.py`):
-   - Carga `.env` e instancia LLM de OpenAI con `tools=[file_search]`.
-   - Función que recibe texto, pasa solo el último mensaje al LLM y devuelve respuesta.
+   - Carga documentos, crea vector store y función para consultar.
    ```python
    # Ejemplo mínimo (adapta de tu main.py)
    from dotenv import load_dotenv
-   from langchain_openai import ChatOpenAI
+   from langchain_ollama import ChatOllama
+   from langchain_community.vectorstores import FAISS
+   from langchain_huggingface import HuggingFaceEmbeddings
    from langchain_core.messages import HumanMessage
 
    load_dotenv()
-   vector_store_ids = ["vs_XXXXXXXX"]  # Tu ID
-   tools = [{"type": "file_search", "vector_store_ids": vector_store_ids}]
-   llm = ChatOpenAI(model="gpt-4o-mini", tools=tools)
+
+   # Carga vector store (crea si no existe)
+   embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+   vectorstore = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+
+   retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+   llm = ChatOllama(model="qwen2.5:7b-instruct", temperature=0.3)
+
+   def get_context(query: str) -> str:
+       results = retriever.get_relevant_documents(query)
+       return "\n".join([doc.page_content for doc in results])
 
    def ask_rag(text: str) -> str:
-       response = llm.invoke([HumanMessage(content=text)])
+       context = get_context(text)
+       prompt = f"Contexto: {context}\nPregunta: {text}"
+       response = llm.invoke([HumanMessage(content=prompt)])
        return response.content
 
    # Para grafo (opcional)
@@ -136,50 +175,55 @@ Añade RAG a tu proyecto existente con pocos cambios.
 3. **Reinicia y prueba en Studio**:
    - Corre `uv run langgraph dev`.
    - Selecciona el grafo "rag" en Studio.
-   - Envía preguntas como "Qué es LangGraph según los docs?" y ve cómo usa PDFs.
+   - Envía preguntas como "Qué es LangGraph según los docs?" y ve cómo usa documentos locales.
 
-> Tip: Usa **Ollama** para agentes locales (gratis) y **OpenAI** solo para RAG con file search. Cambia `PROVIDER` en `.env` según tarea.
+> Tip: Usa **Ollama** para todo (LLM y embeddings) para mantenerlo 100% local y gratuito.
 
 ---
 
 ## 📏 Buenas prácticas / límites
-Maximiza efectividad y evita problemas comunes con RAG.
+Maximiza efectividad y evita problemas comunes con RAG open source.
 
-- **Prototipado rápido**: Ideal para PoCs y casos iniciales (ej. chatbot de soporte con manuales PDF). Sube docs, configura tool y listo.
-- **Menos personalizable**: OpenAI maneja embeddings y búsqueda; no controlas detalles como chunking o reranking. Para customización, usa RAG propio (ej. LangChain + Chroma).
-- **Límites de contexto**: Si necesitas historial largo, usa resúmenes (pide al LLM resumir conversación) o integra con memoria externa. Evita enviar historial completo para reducir costos.
+- **Prototipado rápido y privado**: Ideal para casos sensibles (ej. documentos internos). Procesa localmente sin subir nada.
+- **Más personalizable**: Controla embeddings, chunking y búsqueda; ajusta modelos según necesidades.
+- **Límites de contexto**: Si necesitas historial largo, usa resúmenes (pide al LLM resumir conversación) o integra con memoria externa. Evita enviar historial completo para reducir recursos.
 - **Otras prácticas**:
-  - **Chunking**: OpenAI chunk automaticamente; para control, preprocesa PDFs en texto pequeño.
-  - **Calidad**: Usa PDFs limpios (texto, no imágenes); prueba búsquedas manuales en dashboard.
-  - **Costos**: Monitorea uso (cada búsqueda consume tokens); optimiza con filtros o resúmenes.
-  - **Privacidad**: Datos en OpenAI (revisa políticas); para sensible, usa vector stores locales.
+  - **Chunking**: Usa `RecursiveCharacterTextSplitter` para dividir documentos en trozos relevantes (ajusta `chunk_size` y `chunk_overlap`).
+  - **Calidad**: Usa documentos limpios (texto, no imágenes); prueba búsquedas con `retriever.get_relevant_documents("query")`.
+  - **Recursos**: Corre en CPU (más lento pero gratis); para velocidad, usa GPU si disponible.
+  - **Privacidad**: Todo local; no hay datos enviados a terceros.
 
-Para producción avanzada, evoluciona a RAG híbrido (local + API).
+Para producción avanzada, escala con más documentos o integra búsquedas web open source.
 
 ---
 
 ## 🧪 Checklist de verificación
 Asegúrate de que RAG funcione correctamente antes de usar.
 
-- [ ] Vector store creado en OpenAI dashboard y PDFs subidos/procesados.
-- [ ] `vector_store_id` copiado y configurado en código (ej. en `tools`).
-- [ ] LLM de OpenAI instanciado con `tools=[file_search]` y probado directamente.
-- [ ] Invocación usando solo el último mensaje (o resumen si necesitas contexto).
-- [ ] Agente registrado en `langgraph.json` (ej. nuevo grafo "rag") y probado en Studio (preguntas responden con contexto de PDFs).
+- [ ] Dependencias instaladas: `langchain-community`, `faiss-cpu`, `sentence-transformers`, `pypdf`.
+- [ ] Documentos cargados y vector store creado/guardado localmente (ej. en `faiss_index`).
+- [ ] Retriever configurado y probado directamente (busca contexto relevante).
+- [ ] LLM local (Ollama) integrado con contexto de búsqueda.
+- [ ] Invocación usando contexto inyectado en prompt.
+- [ ] Agente registrado en `langgraph.json` (ej. nuevo grafo "rag") y probado en Studio (preguntas responden con contexto de documentos).
 
-Si todo está marcado, tienes RAG básico funcionando.
+Si todo está marcado, tienes RAG open source funcionando.
 
 ---
+
 ## 🔗 Lecturas recomendadas
-- **Documentación de Agents (OpenAI)**: platform.openai.com/docs/guides/agents (guías oficiales para file search y tools).
 - **LangChain RAG Guide**: python.langchain.com/docs/how_to/#qa-with-rag (para RAG avanzado open-source).
-- **Vector Stores Open-Source**: github.com/facebookresearch/faiss (FAISS para búsquedas locales).
+- **FAISS Documentation**: github.com/facebookresearch/faiss (vector store local).
+- **Sentence Transformers**: huggingface.co/sentence-transformers (modelos de embeddings gratuitos).
+- **Ollama para LLMs locales**: ollama.ai (ejecuta modelos open source en tu máquina).
 
 ---
-## 🧭 Próximos pasos (opcional)
-- **Añadir varios PDFs**: Sube más documentos y prueba recuperación semántica (ej. preguntas sobre secciones específicas).
-- **Conectar APIs externas**: Integra web search (ej. Tavily) como tool adicional para info reciente.
-- **Medir calidad**: Implementa métricas como fuentes citadas, precisión de chunking y reranking para mejorar respuestas.
-- **Evolucionar a RAG propio**: Usa LangChain + Chroma para control total (embeddings locales, filtros custom).
 
-Este es un buen inicio; escala según necesidades.
+## 🧭 Próximos pasos (opcional)
+- **Añadir más documentos**: Carga más PDFs/TXT y reconstruye el vector store.
+- **Mejorar búsqueda**: Integra reranking (ej. con `sentence-transformers` para reordenar resultados).
+- **Conectar búsquedas web**: Usa herramientas open source como `langchain-community` para buscar en web (ej. DuckDuckGo).
+- **Medir calidad**: Implementa métricas como precisión de recuperación y relevancia de respuestas.
+- **Escalar**: Para grandes datasets, usa Chroma o Pinecone open source para vector stores más avanzados.
+
+Este es un buen inicio 100% open source; escala según necesidades sin costos.
