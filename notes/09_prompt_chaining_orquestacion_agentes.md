@@ -1,401 +1,224 @@
 # Clase 9 — Prompt Chaining: Orquestación de Agentes en Secuencia
 
-**Objetivo:** Aprender a descomponer tareas complejas en **nodos especializados** que trabajan en secuencia, usando **LangGraph** para crear flujos predecibles y mantenibles.
+**Objetivo:** Aprender a dividir tareas complejas en pasos simples y especializados, usando **LangGraph** para crear flujos de trabajo claros y fáciles de mantener. Esto se basa en lo que vimos en clases anteriores, como el estado compartido (Clase 4) y la integración con herramientas externas (Clase 8).
 
 ---
 
-## 🧠 ¿Qué problema resuelve?
-Cuando las tareas son complejas, un solo prompt puede fallar o volverse difícil de mantener.
+## 🧠 ¿Por qué usar Prompt Chaining?
+Imagina que quieres cocinar una comida complicada. Si intentas hacer todo al mismo tiempo (cortar, cocinar, servir), es un caos. Mejor seguir un plan: primero prepara los ingredientes, luego cocina, y al final sirve. Eso es exactamente lo que hace el **Prompt Chaining**.
 
-- **Problema**: Intentar resolver todo en un solo prompt gigante sobrecarga al LLM, reduce precisión y dificulta el debugging.
-- **Solución con Prompt Chaining**: Dividir el trabajo en **múltiples nodos especializados** que trabajan en secuencia, cada uno enfocado en una tarea específica.
-- **Analogía**: Como cocinar una cena completa siguiendo un plan paso a paso (preparar ingredientes → cocinar → emplatar) en lugar de hacer todo simultáneamente.
-- **Beneficio clave**: Mayor control del flujo, especialización de tareas, facilidad de debugging y arquitectura evolutiva.
+- **Problema con un solo prompt:** Cuando pides algo muy complejo a un modelo de IA (como analizar un texto largo, traducirlo y resumirlo todo junto), puede confundirse, cometer errores o ser difícil de arreglar si algo sale mal.
+- **Solución con Prompt Chaining:** Divide la tarea en pasos pequeños, cada uno manejado por un "nodo" especializado. Cada nodo hace solo una cosa bien, y pasa el resultado al siguiente.
+- **Beneficios simples:** Más fácil de entender, probar y mejorar. Como armar un rompecabezas paso a paso en lugar de todo de golpe.
 
-El prompt chaining transforma procesos complejos en pipelines estructurados y predecibles.
-
----
-
-## 🔑 Ideas clave
-Conceptos fundamentales del prompt chaining y su arquitectura.
-
-- **Prompt Chaining**: Patrón de diseño donde conectamos varios nodos de procesamiento en secuencia, cada uno especializado en una tarea específica.
-- **Flujo típico**: `[Input] → [Nodo 1] → [Nodo 2] → [Nodo 3] → [Output]` donde cada nodo es un especialista.
-- **Especialización**: Cada nodo tiene una responsabilidad única y bien definida (ej. traducir, analizar, resumir).
-- **Estado compartido**: La información fluye entre nodos a través del estado del grafo (como vimos en Clase 4).
-- **Control explícito**: El flujo está definido por el código, no por decisiones del modelo (a diferencia de agentes autónomos).
-- **Razonamiento local**: Cada LLM se enfoca solo en su tarea, reduciendo carga cognitiva y mejorando precisión.
-
-Esta arquitectura permite construir sistemas complejos de forma modular y mantenible.
+En resumen, transforma tareas grandes en un proceso ordenado y predecible.
 
 ---
 
-## 🏭 Patrones de Orquestación
-Diferentes arquitecturas para organizar nodos según las necesidades del problema.
+## 🔑 Conceptos Básicos
+Aquí van las ideas principales, explicadas de forma sencilla.
 
-### 1. 🔗 Patrón Secuencial
-**Flujo:** `Nodo A → Nodo B → Nodo C` (lineal y predecible)
+- **Prompt Chaining:** Es como una cadena de pasos donde cada "nodo" (un pequeño programa o función) hace una tarea específica y pasa la información al siguiente. Ejemplo: Paso 1: Traducir texto. Paso 2: Analizar el sentimiento. Paso 3: Crear un resumen.
+- **Flujo típico:** Empieza con la entrada (lo que le das al sistema), pasa por varios nodos, y termina con el resultado final.
+- **Especialización:** Cada nodo es un experto en una cosa, como un traductor o un resumidor. Esto hace que cada parte sea más precisa.
+- **Estado compartido:** Como vimos en Clase 4, la información viaja entre nodos a través de un "estado" común, como una caja donde cada nodo agrega o cambia cosas.
+- **Control claro:** Tú decides cómo se conectan los nodos (en código), no el modelo de IA. Esto es diferente a los agentes autónomos, donde la IA decide más.
+- **Enfoque simple:** Cada nodo solo piensa en su tarea, lo que reduce errores y hace todo más eficiente.
 
-**Ejemplo práctico:**
-```python
-# Pipeline de análisis de texto
-Entrada: "Texto largo en inglés"
-→ Nodo 1: Traductor (inglés → español)
-→ Nodo 2: Analizador de sentimiento
-→ Nodo 3: Generador de resumen
-Salida: "Resumen en español con análisis de sentimiento"
-```
-
-**¿Cuándo usarlo?**
-- Cada paso depende del resultado del anterior
-- Proceso claro y lineal sin bifurcaciones
-- Transformación progresiva de datos (como un pipeline de producción)
-
-### 2. ⚖️ Patrón Paralelo
-**Flujo:** `Input → [Nodo A | Nodo B | Nodo C] → Consolidador` (ejecución simultánea)
-
-**Ejemplo práctico:**
-```python
-# Análisis multi-perspectiva de un producto
-Entrada: "Reseña de producto"
-→ Nodo A: Análisis técnico (en paralelo)
-→ Nodo B: Análisis de usabilidad (en paralelo)
-→ Nodo C: Análisis de precio (en paralelo)
-→ Consolidador: Combina resultados en informe completo
-```
-
-**Ventajas:**
-- ⚡ **Mayor velocidad**: Ejecución simultánea reduce tiempo total
-- 🎯 **Múltiples perspectivas**: Diferentes análisis del mismo input
-- 🔄 **Redundancia**: Mayor confiabilidad al tener múltiples validaciones
-
-### 3. 🧾 Patrón Condicional (Routing)
-**Flujo:** Decisiones basadas en condiciones que determinan el siguiente nodo
-
-**Ejemplo práctico:**
-```python
-# Clasificador de consultas de soporte
-Entrada: "Consulta del cliente"
-→ Clasificador (analiza tipo de consulta)
-  │
-  ├─ Si es "Técnico" → Nodo Soporte Técnico
-  ├─ Si es "Facturación" → Nodo Finanzas
-  └─ Si es "General" → Nodo Atención al Cliente
-```
-
-**¿Cuándo usarlo?**
-- Diferentes tipos de input requieren procesamiento diferente
-- Sistemas de clasificación y enrutamiento
-- Workflows adaptativos según contexto
-
-### 4. 🤖 Patrón Planificador (Planning)
-**Flujo:** Un nodo "maestro" decide dinámicamente qué nodos ejecutar
-
-**Ejemplo práctico:**
-```python
-# Sistema de investigación inteligente
-Pregunta: "¿Cómo afecta el cambio climático a la agricultura?"
-→ Planificador analiza y decide:
-  - ✅ Necesita: Búsqueda web + Análisis de papers + Síntesis
-  - ❌ No necesita: Generación de imágenes + Traducción
-→ Ejecuta solo los nodos necesarios
-```
-
-**Ventajas:**
-- Optimiza recursos ejecutando solo lo necesario
-- Adaptable a diferentes tipos de consultas
-- Reduce costos al evitar llamadas innecesarias
-
-### 5. 🔍 Patrón Evaluador (Critic Loop)
-**Flujo cíclico:** Generar → Evaluar → Mejorar → Repetir hasta cumplir criterios
-
-**Ejemplo práctico:**
-```python
-# Generador de contenido con control de calidad
-1. Generador: Crea artículo inicial
-2. Evaluador: Revisa criterios (claridad, tono, longitud)
-3. Si NO cumple: Genera feedback específico → vuelve al paso 1
-4. Si SÍ cumple: Artículo aprobado → FIN
-```
-
-**¿Cuándo usarlo?**
-- Necesitas garantizar calidad del output
-- Iteración hasta cumplir estándares específicos
-- Mejora progresiva basada en feedback
-
-### 6. 🦀 Patrón Agente (ReAct)
-**Flujo autónomo:** El LLM decide qué herramientas usar y cuándo
-
-**Características:**
-- **Razonamiento + Acción**: El agente piensa y actúa iterativamente
-- **Autonomía**: Decide qué herramientas usar según el contexto
-- **Menos control**: El flujo no está predefinido, el LLM tiene libertad
-- **Reflexión iterativa**: Evalúa resultados y ajusta estrategia
-
-**¿Cuándo usarlo?**
-- Tareas abiertas sin flujo predefinido
-- Necesitas que el agente explore soluciones
-- Priorizas flexibilidad sobre control estricto
-
-> **Nota**: Este patrón se verá en detalle en clases posteriores sobre agentes autónomos.
+Esto te permite construir sistemas complejos de manera modular, como agregar piezas a un Lego.
 
 ---
 
-## ⚖️ Cuándo usar Chaining vs Chain of Thought
-Decisión crítica: ¿Un solo prompt con razonamiento o múltiples nodos especializados?
+## 🏭 Tipos de Patrones para Organizar los Pasos
+Dependiendo de lo que necesites, puedes organizar los nodos de diferentes formas. Aquí te explico cada uno con ejemplos fáciles.
 
-### Usar Chain of Thought (Un Solo Prompt)
+### 1. 🔗 Patrón Secuencial (Uno tras Otro)
+**Cómo funciona:** Los nodos van en línea recta, uno después del otro.
+
+**Ejemplo fácil:**
+- Entrada: Un texto largo en inglés.
+- Nodo 1: Lo traduce al español.
+- Nodo 2: Analiza si el sentimiento es positivo o negativo.
+- Nodo 3: Crea un resumen corto.
+- Salida: Un resumen en español con el análisis del sentimiento.
+
+**¿Cuándo usarlo?** Cuando cada paso necesita el resultado del anterior, como una receta de cocina.
+
+### 2. ⚖️ Patrón Paralelo (Varios al Mismo Tiempo)
+**Cómo funciona:** Varios nodos trabajan al mismo tiempo y luego se combinan.
+
+**Ejemplo fácil:**
+- Entrada: Una reseña de un producto.
+- Nodo A: Analiza lo técnico (calidad, durabilidad).
+- Nodo B: Analiza la facilidad de uso.
+- Nodo C: Analiza el precio.
+- Luego, un nodo combina todo en un informe completo.
+
+**Ventajas:** Es más rápido porque se hace en paralelo, y obtienes diferentes puntos de vista.
+
+### 3. 🧾 Patrón Condicional (Decide Según la Situación)
+**Cómo funciona:** Un nodo decide cuál es el siguiente paso basado en condiciones.
+
+**Ejemplo fácil:**
+- Entrada: Una consulta de un cliente.
+- Nodo clasificador: Mira si es sobre "soporte técnico", "facturación" o "general".
+- Luego, envía a un nodo específico: Si es técnico, va a soporte; si es facturación, a finanzas.
+
+**¿Cuándo usarlo?** Cuando el proceso cambia según el tipo de entrada, como un menú de opciones.
+
+### 4. 🤖 Patrón Planificador (Elige lo Necesario)
+**Cómo funciona:** Un nodo "jefe" decide qué pasos ejecutar, sin hacer todo siempre.
+
+**Ejemplo fácil:**
+- Pregunta: "¿Cómo afecta el cambio climático a la agricultura?"
+- Planificador: Decide que necesita buscar en web, analizar artículos y sintetizar, pero no generar imágenes.
+- Ejecuta solo esos nodos.
+
+**Ventajas:** Ahorra tiempo y dinero al no hacer pasos innecesarios.
+
+### 5. 🔍 Patrón Evaluador (Mejora Hasta que Esté Bien)
+**Cómo funciona:** Crea algo, lo revisa, y si no está bien, lo mejora repetidamente.
+
+**Ejemplo fácil:**
+- Nodo generador: Crea un artículo.
+- Nodo evaluador: Revisa si es claro, tiene buen tono y longitud adecuada.
+- Si no cumple, da feedback y vuelve a generar hasta que esté perfecto.
+
+**¿Cuándo usarlo?** Cuando necesitas calidad alta, como en escritura profesional.
+
+### 6. 🦀 Patrón Agente (La IA Decide)
+**Cómo funciona:** La IA elige qué herramientas usar y en qué orden, con libertad.
+
+**Características:** Piensa y actúa paso a paso, adaptándose al contexto.
+
+**¿Cuándo usarlo?** Para tareas abiertas donde no hay un plan fijo, como investigar un tema nuevo.
+
+> **Nota:** Este patrón lo veremos más en clases futuras sobre agentes autónomos.
+
+---
+
+## ⚖️ ¿Cuándo Usar Chaining o Chain of Thought?
+Una decisión importante: ¿Hacer todo en un solo prompt con razonamiento interno, o dividir en múltiples nodos?
+
+### Usa Chain of Thought (Un Solo Prompt)
 **Mejor para:**
-- ✅ Tareas simples donde el modelo puede seguir todo el plan
-- ✅ Instrucciones que caben cómodamente en un prompt
-- ✅ Optimizar costos (una sola llamada al LLM)
-- ✅ Modelos razonadores avanzados (OpenAI O1, Gemini 2.0 Flash Thinking, Claude con extended thinking)
+- Tareas simples que el modelo puede manejar solo.
+- Cuando quieres ahorrar costos (solo una llamada a la IA).
+- Ejemplo: "Analiza este texto, encuentra el sentimiento y resume" – todo en un prompt claro.
 
-**Ejemplo:** "Analiza este texto, identifica el sentimiento y genera un resumen" → Un solo prompt bien estructurado.
-
-### Usar Chaining (Múltiples Nodos)
+### Usa Chaining (Múltiples Nodos)
 **Mejor para:**
-- ✅ Pasos con alta carga cognitiva que necesitan enfoque dedicado
-- ✅ Prompts muy largos que requieren división para claridad
-- ✅ Integración con servicios externos (APIs, bases de datos)
-- ✅ Combinar diferentes modelos (LLM + generación de imágenes + TTS)
-- ✅ Arquitectura evolutiva que crecerá con el tiempo
-- ✅ Debugging y mantenibilidad a largo plazo
+- Pasos que necesitan mucho enfoque o integración con otras herramientas (como APIs o imágenes).
+- Cuando el proyecto crecerá y necesitarás agregar más pasos.
+- Ejemplo: Extraer datos de un PDF, generar un tweet y crear una imagen – necesita diferentes tecnologías.
 
-**Ejemplo:** "Extrae datos de PDF → Genera tweet → Crea imagen para el tweet" → Requiere múltiples tecnologías.
-
-### 💰 Consideración de Costos
-- **Chaining**: Cada nodo = una llamada al modelo → Mayor costo
-- **Chain of Thought**: Una sola llamada → Más económico
-- **Balance**: Evalúa claridad arquitectónica vs costo según tu caso de uso
+**Costo:** Chaining cuesta más porque cada nodo es una llamada separada, pero vale la pena por la claridad.
 
 ---
 
-## ⚙️ Implementación en LangGraph
-Cómo construir flujos secuenciales con LangGraph (recordando conceptos de Clase 4).
+## ⚙️ Cómo Implementarlo en LangGraph
+Usando lo que aprendimos en Clase 4 sobre grafos y estado.
 
-### Método 1: Construcción Manual
+### Ejemplo Básico: Construcción Manual
+Aquí un código simple para un flujo secuencial.
+
 ```python
 from langgraph.graph import StateGraph, END
 from typing import TypedDict
 
+# Define el estado (como una caja de datos compartida)
 class State(TypedDict):
-    input: str
-    result: str
+    input: str  # Lo que entra
+    result: str  # Lo que se acumula
 
-# Definir funciones de nodos
+# Nodo 1: Procesa la entrada
 def nodo_1(state: State) -> State:
-    # Procesar y retornar estado actualizado
     return {"result": f"Procesado por nodo 1: {state['input']}"}
 
+# Nodo 2: Agrega más
 def nodo_2(state: State) -> State:
     return {"result": f"{state['result']} + nodo 2"}
 
+# Nodo 3: Termina
 def nodo_3(state: State) -> State:
     return {"result": f"{state['result']} + nodo 3"}
 
-# Construir grafo
+# Construye el grafo
 graph = StateGraph(State)
 graph.add_node("nodo_1", nodo_1)
 graph.add_node("nodo_2", nodo_2)
 graph.add_node("nodo_3", nodo_3)
 
-# Conectar en secuencia
+# Conecta los nodos en orden
 graph.set_entry_point("nodo_1")
 graph.add_edge("nodo_1", "nodo_2")
 graph.add_edge("nodo_2", "nodo_3")
 graph.add_edge("nodo_3", END)
 
+# Compila y listo para usar
 app = graph.compile()
 ```
 
-### Método 2: Atajo con `add_sequence`
-```python
-# Forma compacta para flujos lineales
-builder.add_sequence([nodo_1, nodo_2, nodo_3])
-```
-
-> **Nota**: El nombre de la función se usa automáticamente como nombre del nodo. Útil para prototipos rápidos.
+### Atajo Rápido
+Para flujos lineales, usa `add_sequence` para simplificar.
 
 ---
 
-## 💼 Caso Práctico 1: Pipeline Extractor + Conversation
-Ejemplo real de cómo estructurar un agente conversacional con preparación de datos.
+## 💼 Ejemplos Prácticos
+Veamos casos reales para entender mejor.
 
-### Arquitectura
-```
-INICIO → Extractor → Conversation → FIN
-```
+### Caso 1: Pipeline Extractor + Conversation
+Arquitectura: Inicio → Extractor → Conversation → Fin
 
-### Responsabilidades de cada nodo
+- **Extractor:** Prepara datos, como sacar texto de un PDF (usa herramientas de Clase 8).
+- **Conversation:** Habla con el usuario, usando los datos preparados.
 
-**Nodo Extractor:**
-- Prepara o extrae datos del estado inicial
-- Procesa archivos o documentos si están presentes
-- Enriquece el estado con información estructurada
-- Ejemplo: Extraer texto de PDF antes de conversar
+Beneficios: Separa la preparación de la charla, fácil de expandir y probar.
 
-**Nodo Conversation:**
-- Mantiene la interacción con el usuario
-- Decide si necesita consultar RAG (como vimos en Clase 8)
-- Usa el estado enriquecido por el extractor
-- Genera respuesta final contextualizada
+### Caso 2: Pipeline de Social Media
+Crea un post completo (texto + imagen) desde un PDF.
 
-### Beneficios de esta arquitectura
-- ✅ **Separación de responsabilidades**: Extracción vs conversación
-- ✅ **Evolutiva**: Fácil agregar nodos entre extractor y conversation
-- ✅ **Debugging simplificado**: Puedes inspeccionar estado después de cada nodo
-- ✅ **Reutilizable**: El extractor puede usarse en otros flujos
+- Nodo 1: Genera un tweet corto del texto largo.
+- Nodo 2: Crea una imagen basada en el tweet (usando modelos como DALL·E).
+- Nodo 3: Combina todo en un post listo.
+
+¿Por qué chaining? Porque un solo modelo no puede generar imágenes; necesitas diferentes herramientas.
 
 ---
 
-## 💼 Caso Práctico 2: Pipeline de Social Media
-Ejemplo que demuestra por qué el chaining es necesario para integrar múltiples tecnologías.
+## 🔀 Workflows vs Agents: ¿Cuál Elegir?
+- **Workflows (Control Tú):** Tú defines los pasos exactamente. Bueno para procesos estrictos como en salud o finanzas.
+- **Agents (La IA Decide):** La IA elige qué hacer. Bueno para tareas creativas o abiertas.
 
-### Caso de Uso
-Generar contenido completo para redes sociales (texto + imagen) desde un documento PDF.
-
-### Arquitectura
-```
-PDF/Texto → Generador de Tweet → Generador de Imagen → Output Final
-```
-
-### Implementación paso a paso
-
-**Nodo 1: Generador de Tweet**
-- **Entrada**: Texto largo extraído del PDF
-- **Proceso**: LLM resume y optimiza para Twitter (280 caracteres)
-- **Salida**: Tweet optimizado guardado en estado
-
-**Nodo 2: Generador de Imagen**
-- **Entrada**: Tweet del nodo anterior
-- **Proceso**: Usa modelo de imágenes (DALL·E, Stable Diffusion)
-- **Prompt para imagen**: Basado en el contenido del tweet
-- **Salida**: URL o archivo de imagen generada
-
-**Nodo 3: Compositor Final**
-- **Entrada**: Tweet + imagen
-- **Salida**: Post completo listo para publicar
-
-### ¿Por qué Chaining es necesario aquí?
-- ❌ **Chain of Thought NO funciona**: Un LLM no puede generar imágenes
-- ✅ **Requiere múltiples modelos**: LLM (texto) + modelo de difusión (imagen)
-- ✅ **Tecnologías diferentes**: Cada paso usa APIs distintas
-- ✅ **Dependencias claras**: La imagen depende del tweet generado
+Puedes combinar: Un workflow con un nodo agente para partes flexibles.
 
 ---
 
-## 🔀 Workflows vs Agents: Diferencias Clave
-Entender cuándo usar control explícito (workflows) vs autonomía (agents).
-
-### Workflows (Control Explícito)
-**Características:**
-- ✅ Lógica de acción definida en el código
-- ✅ Pasos, condiciones y herramientas explícitas
-- ✅ Control total del flujo de ejecución
-- ✅ Predecible y determinista
-- ✅ RAG, APIs, function calls pre-configurados
-
-**Ejemplo de flujo médico:**
-```python
-1. Preguntar nombre y apellido → esperar respuesta
-2. Crear registro en BD con function call
-3. Solicitar subida de fórmula médica → esperar archivo
-4. Procesar PDF con extraction
-5. Generar resumen médico
-```
-
-**¿Cuándo usar?**
-- Procesos regulados o críticos (finanzas, salud)
-- Necesitas garantizar pasos específicos
-- Debugging y auditoría son prioritarios
-
-### Agents (Autonomía del LLM)
-**Características:**
-- ✅ Se delega control al LLM
-- ✅ El modelo decide qué herramientas usar y cuándo
-- ✅ Proporciones: instrucciones generales + estado + tools
-- ✅ Flexible y adaptable
-- ✅ Arquitectura ReAct (Razonamiento + Acción)
-
-**Ejemplo de agente investigador:**
-```python
-Objetivo: "Investiga sobre energía solar"
-→ Agente decide:
-  1. Buscar en web
-  2. Analizar papers relevantes
-  3. Consultar base de datos
-  4. Sintetizar hallazgos
-→ El orden y herramientas no están predefinidos
-```
-
-**¿Cuándo usar?**
-- Tareas abiertas sin flujo fijo
-- Necesitas exploración y creatividad
-- El contexto determina las acciones necesarias
-
-> **Nota**: Puedes combinar ambos enfoques (workflow con nodos agente para tareas específicas).
-
----
-
-## ✅ Buenas Prácticas
-Recomendaciones para diseñar y mantener sistemas con prompt chaining.
-
-### 1. Visualización del Grafo
-- **Usa LangGraph Studio**: Visualiza el flujo completo de tu chain
-- **Valida conexiones**: Asegúrate de que todos los edges estén correctos
-- **Documenta con diagramas**: Genera gráficos para tu equipo
-- **Inspecciona estado**: Revisa cómo fluye la información entre nodos
-
-### 2. Evita Over-Engineering
-**⚠️ Advertencia**: No todo necesita múltiples nodos.
-
-**Ejemplo educativo vs real:**
-- ❌ "Generar broma → mejorar broma → añadir twist" → Innecesario con modelos razonadores
-- ✅ "Extraer datos → Consultar API → Generar reporte" → Justificado por integración de servicios
-
-**Pregunta clave:** ¿Un modelo razonador puede hacer esto en un solo prompt?
-
-### 3. Arquitectura Evolutiva
-- **Nodos preparatorios**: Déjalos aunque inicialmente no hagan mucho
-- **Facilita bifurcaciones**: Estructura que permite agregar nodos fácilmente
-- **Explícita**: Hace visible la arquitectura del sistema
-- **Mantenible**: Cambios futuros son más simples
-
-**Ejemplo:**
-```python
-# Hoy: Extractor → Conversation
-# Mañana: Extractor → Validator → Enricher → Conversation
-# La estructura inicial facilita la evolución
-```
+## ✅ Consejos Prácticos
+- Usa herramientas como LangGraph Studio para ver y probar tu flujo.
+- No compliques: Solo divide si es necesario (pregúntate si un modelo razonador puede hacerlo solo).
+- Diseña para crecer: Empieza simple, pero deja espacio para agregar nodos después.
 
 ---
 
 ## 💭 Reflexión Final
+Pregúntate:
+1. ¿Puedes hacer esto en un solo prompt?
+2. ¿Necesitas integrar varias herramientas?
+3. ¿Vale la pena el costo extra por claridad?
+4. ¿Tu diseño permite cambios futuros?
 
-Al diseñar tu pipeline con LangGraph, hazte estas preguntas:
-
-1. **¿Los pasos pueden condensarse en un prompt con razonamiento?** → Considera Chain of Thought
-2. **¿Se requiere integración de múltiples modelos/servicios?** → Usa Chaining
-3. **¿La claridad arquitectónica justifica el costo adicional?** → Evalúa trade-offs
-4. **¿El flujo necesitará evolucionar con más nodos?** → Diseña arquitectura evolutiva
-
-El equilibrio entre chaining y chain of thought depende de tu caso de uso específico, restricciones de costo y necesidades de mantenibilidad.
+Elige según tu proyecto: equilibrio entre simplicidad, costo y mantenibilidad.
 
 ---
 
 ## 📚 Recursos
-
-- [LangGraph Workflows - Documentación Oficial](https://langchain-ai.github.io/langgraph/tutorials/workflows/)
-- [LangGraph Tutorials](https://langchain-ai.github.io/langgraph/)
-- [Prompt Chaining Best Practices](https://www.promptingguide.ai/techniques/prompt_chaining)
+- Documentación de LangGraph.
+- Tutoriales y mejores prácticas.
 
 ---
 
-## 🤔 Preguntas para Reflexionar
-
-- ¿Qué problemas de tu proyecto actual resolverías con chaining?
-- ¿Qué nodos agregarías a tu flujo para hacerlo más robusto?
-- ¿Dónde tiene sentido usar chain of thought vs múltiples nodos en tu caso?
-- ¿Cómo balanceas costo vs claridad arquitectónica en tu sistema?
-- ¿Tu arquitectura actual permite evolucionar fácilmente?
+## 🤔 Preguntas para Pensar
+- ¿Qué partes de tu proyecto mejorarías con chaining?
+- ¿Dónde usarías chain of thought en lugar de nodos?
+- ¿Cómo equilibras costo y claridad en tu sistema?
