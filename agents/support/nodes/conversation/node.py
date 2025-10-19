@@ -1,22 +1,29 @@
-from langchain_ollama import ChatOllama
-from langchain_core.messages import HumanMessage, AIMessage
-from ..state import State
-from .prompt import SYSTEM_PROMPT
-from .tools import tools
+from agents.support.state import State
+from langchain.chat_models import init_chat_model
+from agents.support.nodes.conversation.tools import tools
+from agents.support.nodes.conversation.prompt import prompt_template
+from langchain_core.messages import AIMessage
 
-llm = ChatOllama(model="llama3.1:8b", temperature=0.3)
-llm_with_tools = llm.bind_tools(tools)
+llm = init_chat_model("ollama:qwen2.5:7b-instruct", temperature=0.3)
+llm = llm.bind_tools(tools)
 
-def conversation(state: State) -> dict:
+def conversation(state: State):
     """Nodo: Responde usando contexto y herramientas."""
-    question = state.get("question", "")
+    new_state: State = {}
+    history = state["messages"]
+    last_message = history[-1]
+    customer_name = state.get("customer_name", "Usuario")
     context = state.get("context", "")
     
-    if context:
-        full_prompt = f"Contexto: {context}\nPregunta: {question}"
-    else:
-        full_prompt = question
+    # Formatear el prompt con el nombre del cliente
+    prompt = prompt_template.format(name=customer_name, context=context)
     
-    messages = [HumanMessage(content=full_prompt)]
-    response = llm_with_tools.invoke(messages)
-    return {"messages": [response]}
+    print('*' * 100)
+    print(last_message.content)
+    
+    # Invocar el LLM con el prompt del sistema y el mensaje del usuario
+    ai_message = llm.invoke([("system", prompt), ("user", last_message.content)])
+    ai_message = AIMessage(content=ai_message.content)
+    
+    new_state["messages"] = [ai_message]
+    return new_state

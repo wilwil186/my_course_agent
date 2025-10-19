@@ -17,3 +17,4 @@ class State(TypedDict):
     question: str  # Pregunta del usuario
     context: str  # Contexto de RAG
     contact_info: Optional[ContactInfo]  # Datos extraídos
+    customer_name: Optional[str]  # Nombre del cliente
