@@ -1,7 +1,7 @@
 from langchain_ollama import ChatOllama
 from langchain_core.messages import SystemMessage, HumanMessage
-from src.agents.support.state import State  # Import absoluto
-from src.agents.support.nodes.extractor.prompt import SYSTEM_PROMPT
+from agents.support.state import State  # Import absoluto
+from agents.support.nodes.extractor.prompt import SYSTEM_PROMPT
 
 llm = ChatOllama(model="qwen2.5:7b-instruct", temperature=0)
 
