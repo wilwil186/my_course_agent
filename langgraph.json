@@ -1,10 +1,12 @@
 {
   "dependencies": ["."],
-   "graphs": {
-     "agent": "./src/agents/main.py:app",
-     "simple": "./src/agents/simple.py:app",
-     "rag": "./src/agents/rag.py:app",
-      "support": "./agents/support/agent.py:app"
-   },
+    "graphs": {
+      "agent": "./src/agents/main.py:app",
+      "simple": "./src/agents/simple.py:app",
+      "rag": "./src/agents/rag.py:app",
+      "booking": "./src/agents/booking.py:app",
+      "react": "./src/agents/react.py:app",
+       "support": "./agents/support/agent.py:app"
+    },
   "env": ".env"
 }
