@@ -1,6 +1,6 @@
 # 🤖 Curso de Agentes con LangGraph y RAG
 
-¡Bienvenido! Este repositorio es una guía práctica y paso a paso para aprender a construir agentes inteligentes usando **LangGraph** y **RAG (Retrieval-Augmented Generation)**. Está diseñado especialmente para principiantes, con explicaciones simples, ejemplos prácticos y notebooks interactivos.
+¡Bienvenido! Este repositorio contiene los materiales de un curso para aprender a crear agentes de IA usando **LangGraph**, **LangChain** y técnicas como **RAG (Retrieval-Augmented Generation)**. Incluye notas detalladas, notebooks interactivos, código fuente y ejemplos prácticos, ideal para principiantes y desarrolladores que quieren profundizar en agentes inteligentes.
 
 ## 🎯 ¿Qué aprenderás?
 - Construir agentes que piensan y actúan como humanos.
@@ -11,35 +11,36 @@
 No necesitas ser un experto en programación; empezaremos desde lo básico.
 
 ## 📁 Estructura del Proyecto
-Aquí tienes una visión general de cómo está organizado el repositorio para que sea fácil de seguir:
+Aquí tienes una visión general actualizada de cómo está organizado el repositorio para que sea fácil de seguir:
 
 ```
 my_course_agent/
-├── src/                          # Código fuente del proyecto
-│   ├── agents/                   # Agentes principales (ej: main.py, rag.py)
-│   └── api/                      # APIs para conectar el agente
-├── notes/                        # Notas y lecciones en español
-│   ├── 01_notas.md              # Introducción básica
-│   ├── 02_notas.md              # ...
-│   └── ...                       # Más lecciones paso a paso
-├── notebooks/                    # Notebooks interactivos de Jupyter
-│   ├── 01_noootbook.ipynb       # Ejemplos simples
-│   ├── 02_simple.ipynb          # ...
-│   └── ...                       # Experimentos con código
-├── data/                         # Archivos de datos (ej: PDFs para RAG)
-│   └── 9587014499.PDF           # Documento de ejemplo
-├── scripts/                      # Scripts útiles
-│   └── build_index.py           # Para construir índices de búsqueda
+├── .langgraph_api/              # Archivos relacionados con la API de LangGraph (checkpoints, etc.)
+├── agents/                      # Implementaciones de agentes y nodos de soporte
+│   └── support/                 # Nodos y herramientas de soporte para agentes
+├── notebooks/                   # Notebooks interactivos de Jupyter para lecciones
+│   ├── .rag_index/              # Índices para RAG (Retrieval-Augmented Generation)
+│   ├── faiss-e5-small/          # Índice FAISS para embeddings
+│   ├── PDF/                     # Documentos PDF para ejemplos
+│   └── *.ipynb                  # Notebooks de lecciones (01_introduccion_agentes_langgraph.ipynb, etc.)
+├── notes/                       # Notas detalladas en Markdown para cada lección
+│   └── *.md                     # Archivos como 01_introduccion_langgraph_agentes_ia.md, etc.
+├── src/                         # Código fuente modular
+│   ├── agents/                  # Módulos de agentes (booking.py, rag.py, etc.)
+│   └── api/                     # Módulos de API
 ├── .gitignore                   # Archivos a ignorar en Git
+├── .python-version              # Versión de Python especificada
+├── langgraph.json               # Configuración de LangGraph
+├── pyproject.toml               # Configuración del proyecto y dependencias
 ├── README.md                    # Este archivo (¡estás aquí!)
-└── uv.lock                      # Gestión de dependencias con `uv`
+└── uv.lock                      # Lockfile para dependencias con `uv`
 ```
 
 ### Consejos para Navegar:
-- **Empieza por `notes/`:** Lee las notas en orden (01, 02, etc.) para entender los conceptos.
-- **Prueba en `notebooks/`:** Abre los notebooks en Jupyter para ejecutar código y ver resultados.
-- **Explora `src/`:** Mira el código fuente cuando estés listo para detalles técnicos.
-- **Usa `data/`:** Para ejemplos con documentos reales.
+- **Empieza por `notes/`:** Lee las notas en orden (como 01_introduccion_langgraph_agentes_ia.md) para entender los conceptos teóricos.
+- **Prueba en `notebooks/`:** Abre los notebooks en Jupyter (ej: 01_introduccion_agentes_langgraph.ipynb) para ejecutar código y ver resultados interactivos.
+- **Explora `src/` y `agents/`:** Mira el código fuente y agentes cuando estés listo para detalles técnicos y ejemplos prácticos.
+- **Usa `notebooks/PDF/` y `.rag_index/`:** Para ejemplos con documentos reales y RAG.
 
 ## 🚀 Inicio Rápido
 Sigue estos pasos simples para configurar y empezar a experimentar:
@@ -48,18 +49,20 @@ Sigue estos pasos simples para configurar y empezar a experimentar:
    - Descarga Python 3.11+ desde [python.org](https://www.python.org/downloads/).
    - Asegúrate de marcar "Add to PATH" durante la instalación.
 
-2. **Instala Ollama (para modelos de IA local):**
-   - Ve a [ollama.ai](https://ollama.ai) y descarga la versión para tu sistema.
-   - Ejecuta: `ollama run llama3.2` (o el modelo que prefieras) para probar.
+2. **Instala uv (gestor de dependencias):**
+   - Ejecuta: `pip install uv` en tu terminal.
 
-3. **Instala dependencias:**
+3. **Instala dependencias del proyecto:**
    - Abre una terminal en la carpeta del proyecto.
-   - Ejecuta: `pip install uv` (o sigue la guía en las notas para más detalles).
-   - Luego: `uv sync` para instalar todo lo necesario.
+   - Ejecuta: `uv sync` para instalar todo lo necesario según `pyproject.toml`.
 
 4. **Ejecuta un ejemplo simple:**
-   - Abre un notebook en `notebooks/` (ej: `01_simple.ipynb`).
-   - Sigue las instrucciones para hacer preguntas a tu agente.
+   - Abre un notebook en `notebooks/` (ej: `01_introduccion_agentes_langgraph.ipynb`).
+   - Sigue las instrucciones para ejecutar código y ver resultados interactivos.
+
+5. **Opcional: Instala Ollama para modelos locales:**
+   - Ve a [ollama.ai](https://ollama.ai) y descarga la versión para tu sistema.
+   - Ejecuta: `ollama run llama3.2` para probar modelos de IA local.
 
 ## 🛠️ Herramientas Recomendadas
 - **Jupyter Notebook:** Para ejecutar código interactivo (instálalo con `pip install jupyter`).
